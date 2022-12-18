@@ -1,0 +1,50 @@
+<!-- Googleから本を検索して返すAPI。コンソールに返ってくる -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>検索</button>
+    <table border="1" cellespacing="0"></table>
+    <tr>
+        <th>書籍名</th>
+        <th>出版社</th>
+    </tr>
+    </table>
+
+<p>
+    {items.searchInfo}
+</p>
+
+    <script>
+        const keyword = document.querySelector('input');
+        const btn = document.querySelector('button');
+
+        const callApi = async () => {
+            const url = new URL(
+                "https://www.googleapis.com/books/v1/volumes"
+            );
+
+            // URLの検索パラメータに値を設定するメソッド『 ?q= 』以降の部分を作成している
+            url.searchParams.set('q', keyword.value)
+
+
+            const res = await fetch(url);
+            const books = await res.json();
+            console.log(books);
+            alert(books);
+
+        };
+        btn.addEventListener('click', callApi);
+
+    </script>
+</body>
+
+</html>

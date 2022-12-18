@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .article__wrapper__img--site{
+ overflow: hidden; /* //hover時に子要素がはみ出るのを防ぐ */
+  height:230px;
+  max-width:500px;
+}
+
+.article__wrapper__img--img{
+  display: block;
+  max-width:500px;
+  height:200px;
+  border-radius: 5vh;
+}
+/* // jQuery effect */
+.article__wrapper__img--img.extra{
+transform:scale(1.1);
+border-radius: 5vh;
+display: block;
+transition:0.3s all;
+}
+  </style>
+</head>
+
+<body>
+  <div class="article__wrapper__img--site">
+    <img class="article__wrapper__img--img" class="" src="imgs/customer.jpg" alt="">
+  </div>
+
+
+
+
+<!-- jQuery本体を読み込むCDN -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+<script>
+  // zoom effect
+  $(function() {
+  $(".article__wrapper__img--site").hover(
+    function() {
+      $(this).find(".article__wrapper__img--img").addClass('extra');
+    },
+    function(){
+      $(this).find(".article__wrapper__img--img").removeClass("extra");
+    }
+  );
+});
+
+</script>
+</body>
+</html>

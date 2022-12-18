@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冨田さんCarousel</title>
+
+
+  <!-- Slick CDN for slider -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+  integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+  crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+  integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+  crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"
+  integrity="sha512-OKuL2kpi8zfeXcqSXnGbL6tKc9JxWmppJY4mOSn1EsngRb7fx1N5+7wOTGqu2bI5OAYL3Og7/Beg7EsWG2OBKA=="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
+  integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
+  crossorigin="anonymous"></script>
+
+    <!-- 自分のcssファイルの読み込みはheadの最後に持ってくること。スタイルシートは、スタイルシートの読み込み順で順次適用され、ファイル間で同じ要素に対する指定がかぶった場合、後から読み込んだ内容で上書きされます。 最後に持ってくることで上書き対策になる -->
+    <link rel="stylesheet" href="./index.css" />
+
+    
+<!-- ここで左右にあるボタンの編集ができる -->
+    <style>
+     .slick-prev::before{
+        color: #12b1c0;
+        font-size:30px;
+        position: relative;
+        top:0;
+        left:30px;
+      }
+      .slick-next::before{
+        color: #12b1c0;
+        font-size:30px;
+        position: relative;
+        top:0;
+        right:40px;
+      }
+    </style>
+</head>
+
+<body>
+  
+  <ul class="DragonBall">
+    <!--slickのスライドの元になるhtmlを用意する -->
+    <li>
+      <a href="#" target="_blank"> <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQQHmN4bzLOJbooxzWFP8znZBYlhFhFsrYVZg&usqp=CAU"
+          alt="画像の補足説明となるテキスト" style="width:100%; height:110px;"></a></li>
+    <!--target ="_blank"は別ウィンドウを開くようにするもの -->
+    <li>
+      <a href="#" target="_blank"> <img
+          src="https://img.atwikiimg.com/www30.atwiki.jp/niconicomugen/attach/1982/2927/gohan.jpg"
+          alt="画像の補足説明となるテキスト" style="width:100%; height:110px;"></a></li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThtv4qvgG0tYFjSaoufgIVNhsuS6FIq_U3sQ&usqp=CAU"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRYUmZlcUVLWoes3o36yzdkMD46ze8PZ5qVOQ&usqp=CAU"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://lh3.googleusercontent.com/iZNNus6DLlhr2EOxPaguSX12ONCEVdDs4MfcO6jIVIP3KCn5zi3-v-DzMQdn5TQ41XD9iEiDK1IhvONrlMMYtw3-X5RSm1tx_GUP2jHBGoBj"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://i.pinimg.com/originals/ca/54/fa/ca54fad74addb84c7c5d3216bf818b49.jpg" alt="ハリネズミ秋のお散歩"
+          width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQsvM_jdMhk8fkexn63QkR4uBIad_8hHqQA8g&usqp=CAU"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://sportssports.work/wp-content/uploads/2019/01/%E3%82%AA%E3%82%BF%E3%82%AF%E7%94%9F%E7%94%A3%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8A%E3%83%BC%E3%81%BF%E3%82%86%E3%81%8D%E3%82%93%E3%81%8F%E3%82%99%E5%A4%A9%E6%B4%A5%E9%A3%AF0-770x422.png"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+  </ul>
+
+
+  <ul class="cats">
+    <li>
+      <a href="#" target="_blank"> <img
+          src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="画像の補足説明となるテキスト" style="width:100%; height:110px;"></a></li>
+    <li>
+      <a href="#" target="_blank"> <img
+          src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="画像の補足説明となるテキスト" style="width:100%; height:110px;"></a></li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://images.unsplash.com/photo-1548247416-ec66f4900b2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://images.unsplash.com/photo-1549211855-216bb040ccdb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://images.unsplash.com/photo-1489084917528-a57e68a79a1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://images.unsplash.com/photo-1533738699159-d0c68059bb61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://images.unsplash.com/photo-1517213849290-bbbfffdc6da3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+    <li>
+      <a href="harinezumi.jpg"><img
+          src="https://images.unsplash.com/photo-1598188306155-25e400eb5078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="ハリネズミ秋のお散歩" width="100%" height="110"></a>
+    </li>
+  </ul>
+
+
+
+
+<script>
+  $('.DragonBall').slick({
+  autoplay: true,//自動で動くかどうか
+  autoplaySpeed: 3000,　//自動なら何秒毎か
+  slidesToShow: 1,//一度に表示するアイテムの数
+});
+
+$('.cats').slick({
+  autoplay: true,//自動で動くかどうか
+  autoplaySpeed: 3000,　//自動なら何秒毎か
+  slidesToShow: 2,//一度に表示するアイテムの数
+  dots: true,  //ドットナビを表示するかどうか
+});
+
+
+
+const menuIcon = document.querySelector(".hamburger-menu")
+
+const navbar = document.querySelector(".navbar");
+
+menuIcon.addEventListener("click", ()=>{
+  navbar.classList.toggle("change");
+});
+
+
+
+const backdrop = document.querySelector(".backdrop");
+//黒の背景がクリックされたら発動
+backdrop.addEventListener("click", ()=>{
+  navbar.classList.toggle("change");
+});
+</script>
+</body>
+</html>

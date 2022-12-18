@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Menu</title>
+<style>
+.container{
+  margin: 30px auto;
+  width: 500px;
+}
+.menu{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display:flex;
+}
+.menu li a{
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  padding: 8px 0;
+  color: #333;
+  text-decoration: none;
+}
+
+/* activeと名付けたクラスで初期状態で選ばれているようにする */
+.menu li a.active{
+  background-color: #333;
+  color:#fff;
+  border-radius: 4px 4px 0 0; /* 左上と右上だけ 4px の角丸が設定されるはずです */
+}
+
+.menu li a:not(.active):hover{ /* このように書いてあげると、 li の下の階層の a 要素のうち、 active ではないものにホバーしたときのスタイル指定することができます */
+opacity: 0.5;
+transition: opacity 0.4s;
+}
+
+.content.active{
+  background-color: #333;
+  color:#fff;
+  display: block; /* activeになっている方は表示しておきたいので、こうしている。 display には同時に一つしか指定できないため， display: block; を指定すると display: none; が上書きされて消えることになります．*/
+ min-height: 150px;   /* min-heightを使えば文章が増えても自動で高さを調整して表示してるようになります。 */
+  padding: 12px;
+}
+.content{
+  display:none; /* activeになっていないところはこれで非表示にしてやる */
+}
+
+
+
+</style>
+</head>
+
+
+<body>
+  <div class="container">
+    <ul class="menu">
+      <li>
+       <a href="#" class="active" data-id="about">Concept</a> <!-- 今contentにつけた識別子の id と、　こちらのリンクを紐付けたいので、 a 要素のほうに data 属性で対応する id の値を持たせてあげます。 
+        同じidを回避するためにカスタムデータ属性を今回使用しているのでしょうか。
+        Answer: そうですね。一つのhtml内ではidは文字どおり一つでなければいけません。
+        idは使えないけど何か適当な属性を使いたいということでカスタムデータ属性を利用しているという考えで問題ないです-->
+      </li>
+
+      <li>
+        <a href="#" data-id="service">Content </a>
+      </li>
+      <li>
+        <a href="#" data-id="contact">Contact</a>
+      </li>
+    </ul>
+
+    <!-- content に識別子をつけたいので id をふっておきます。 -->
+  <section class="content active" id="about">
+Concept of the website.Concept of the website.Concept of the website.Concept of the website.Concept of the website.Concept of the website.Concept of the website.Concept of the website.Concept of the website.
+  </section>
+
+  <section class="content" id="service">
+the content of the service. the content of the service. the content of the service. the content of the service. the content of the service. the content of the service. the content of the service. the content of the service. 
+  </section>
+
+  <section class="content" id="contact">
+Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.Contact me.
+  </section>
+
+</div>
+
+
+
+
+
+
+<script>
+  "use strict"
+  const menuItems = document.querySelectorAll('.menu li a');
+  const contents = document.querySelectorAll('.content')//本文のある中身。
+
+  // では、取得した要素ひとつひとつに対して、イベントを設定していきたいので forEach() を使ってあげます。要素のひとつひとつは clickedItem という名前で受け取って、次の処理をしなさい
+  menuItems.forEach(clickedItem =>{
+    clickedItem.addEventListener('click', e =>{
+  e.preventDefault();         //a 要素ですが、リンク先にページ遷移するという規定の動作があるのですが、それをキャンセルしたいので、こちらにイベントオブジェクトeを渡して preventDefault() を呼んであげましょう。
+
+
+  // 一つが選ばれている時は他の選ばれていない要素はactiveを外さないとあかん。その場合、menuItems の各要素を item という名前で受け取って active クラスを外してあげれば良いので、 item.classList.remove('active'); としてあげれば OK でしょう。
+  menuItems.forEach(item =>{
+    item.classList.remove('active');
+  });
+
+  clickedItem.classList.add('active')//このitemにactiveのクラスをaddしている。こちらの item は名前は同じですが、こちらの menuItems の要素のうちクリックされた要素を示すので、混同しないようにしてください。ここでaddしてるので一つだけ表示される
+
+
+  // こちらの click イベントの中で、まずは全ての content から active クラスを外してあげましょう。それぞれの要素を content という名前で受け取りつつ、 active クラスを外してあげれば良い.
+  contents.forEach(content =>{
+    content.classList.remove('active');
+  });
+  //クリックされたメニュー項目に対応する content の要素を取得したいので、 htmlの各<a>にid をつけておいたので、 getElementById() を使ってあげれば OK でしょう。content の id ですが、クリックされたメニュー項目の dataset.id で取得できるはずです。
+  document.getElementById(clickedItem.dataset.id).classList.add('active');
+})
+  });
+//そのうえで、クリックした item に対して active クラスをつけてあげれば OK でしょう。
+  </script>
+</body>
+</html>

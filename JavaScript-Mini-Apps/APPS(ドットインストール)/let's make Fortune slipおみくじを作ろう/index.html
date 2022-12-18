@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- meta viewportは、スマホやタブレットのモバイル端末で最適にWeb表示させるため（Google推奨のレスポンシブWebデザイン適用時）に必要な欠かせないhtmlタグです。 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Fortune slip(おみくじ)</title>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <h1>Today's your luck</h1>
+  <div id="btn">?</div>
+
+
+
+  <script>
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click", () => {
+
+      const results = ["excellent luch", "good luck","sucks","not bad"]
+
+      // const n = Math.floor(Math.random() * results.length);//このようにしてあげると、要素の数が変わったときも変更箇所は配列のほうだけになるのでミスが減るかと思います。
+
+      // 今 n が 0, 1, 2 のどれかなので,results の中でインデックスが 0 番目、 1 番目、 2 番目の要素のどれか、つまり大吉、中吉、凶のどれかが表示されるはず。
+      // btn.textContent = results[n];
+
+
+      // 上の分をさらに短く書ける
+      btn.textContent = results[Math.floor(Math.random() * results.length)];
+
+      // あとは、この中からランダムにひとつ要素を選んで表示してあげれば良いでしょう。
+
+      //Math.random()は０～１未満のランダムな数を生成
+      //Math.floor()は（）内の数をparseInt()するもの　小数点切り捨て
+
+
+
+      // switchを使った例
+      // btn.textContent = n;
+      // switch(n) {
+      // case 0 :
+      //   btn.textContent = "excellent luck";
+      //   break;
+      // case 1 :
+      //   btn.textContent = "good luck";
+      //   break;
+      // case 2 :
+      //   btn.textContent = "sucks";
+      //    break;//case〜breakまで書いて1つの処理が完成するので、忘れないようにしましょう。
+      // }
+
+                             //確立を操作した悪どいやり方
+      // const results = ["sucks", "sucks", "sucks", "sucks", "excellent luck"]; //4\5 80 % of sucks
+                            
+                            //もうひとつのやり方
+      // const n = Math.random();
+      // if (n < 0.05) {
+      //   btn.textContent = "excellent luck"; //5%
+      // } else if (n < 0.2) {
+      //   btn.textConten = "good luck"; //15%
+      // } else {
+      //   btn.textContent = "sucks" //80%
+      // }
+    });
+
+
+  </script>
+  <!-- switch文とは条件分岐の1つです。条件分岐では、if文で事足りる場合がほとんどですが、switch文ではif文よりも記述量が少ないため、見た目にもすっきりしたプログラムになります。
+
+switch文の構文
+switch文の構文は、次のようになります。
+
+switch (式or変数) {
+case 値1 :
+//式の結果が値1に等しい場合に実行する
+break;
+case 値2 :
+//式の結果が値2に等しい場合に実行する
+break;
+default :
+//式の結果がどれにも該当しない場合に実行する処理
+break;
+}
+
+ 
+
+まずswitchで括ったなかに、式、もしくは変数を書きます。
+
+そのあとに、複数の値とそれぞれの処理を書いていきます。（構文を見てもらえばわかるように、switch文では、それぞれの処理は基本的に並列の関係にあります）
+
+注意してほしいのが、breakの記述。case〜breakまで書いて1つの処理が完成するので、忘れないようにしましょう。
+
+最後のdefaultは、式の結果がどれにも該当しない場合に実行するための処理です。必要に応じて書いても書かなくてもどちらでも構いません。
+
+  -->
+
+
+
+  <!-- <script src="./main.js"></script> -->
+</body>
+
+</html>

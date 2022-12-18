@@ -1,0 +1,59 @@
+<div id="error"></div>
+    <form action ="/" id= "form" class="forms" method="GET">
+
+      <label for="name"> 
+       <input id="name"  name="name" class="form first" type="text" placeholder="Taro Yamada"> <!-- 実はrequiredとしてもいい -->
+      </label> <br>
+
+      <label>
+        <input class="form second" type="email" placeholder="ex) abc@gmail.com">
+      </label><br>
+
+      <label for="password" > 
+        <input id="password" name="password" class="form third" type="password" placeholder="At least 6">
+      </label><br>
+
+      <textarea class="textarea" placeholder="write something"></textarea><br>
+
+
+      <button type="submit" class="contact_button">Send</button>
+    </form>
+
+
+
+
+    <script>
+      // まずは取得する
+    const name = document.getElementById('name')
+    const password = document.getElementById('password')
+    const form = document.getElementById('form')
+    const errorElement = document.getElementById('error')// Idを取得して格納
+    
+    form.addEventListener('submit', (e) =>{
+      let messages =[]
+      if(name.value === '' || name.value == null){  //エラーメッセージを表示
+        messages.push('名前がいるぜベイべ')
+      }
+    
+      //６文字以下ならエラーメッセージ
+    if(password.value.length <=6){
+      messages.push("password must be longer than 6 characters")
+    }
+    //10文字以上ならエラーメッセージ
+    if(password.value.length >=15){
+      messages.push("password must be less than 15 characters")
+    }
+    //
+    if(password.value ==="password"){
+      messages.push("password cannot be "/password/" than 10 characters")
+    }
+    
+    
+      if (messages.length > 0){//メッセージが0以上なら（エラーメッセージが出ている） submitすることを防ぐ
+        e.preventDefault()
+        errorElement.innerText = messages.join(', ')
+      }
+    })
+    
+    
+    </script>

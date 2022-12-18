@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>My Loading Icon</title>
+  <style>
+    body {
+      background: #eee;
+    }
+
+    canvas {
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas width="400" height="260">
+    Canvas not supported.
+  </canvas>
+
+  <script src="js/main.js"></script>
+
+  <script>
+    'use strict';
+
+    //即時関数
+    (() => {
+      class IconDrawer {
+        constructor(canvas) {
+          this.ctx = canvas.getContext('2d');
+
+
+          this.width = canvas.width;
+          this.height = canvas.height;
+          this.r = 60;
+        }
+
+        draw(angle) {
+          this.ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+          this.ctx.fillRect(0, 0, this.width, this.height);
+
+          this.ctx.save();
+
+// オレンジの粒を打つたびに座標計算してられない。なので今は左上にある座標空間の原点を canvas の中心に持ってきてあげて、ここを中心に座標空間ごと回転させながら目盛りを描画していくというテクニックを使ってみます
+
+          this.ctx.translate(this.width / 2, this.height / 2); // 座標を円の中心に持ってくる
+          this.ctx.rotate(Math.PI / 180 * angle);
+
+          this.ctx.beginPath();
+          this.ctx.moveTo(0, -this.r - 5);
+          this.ctx.lineTo(0, -this.r + 5);
+          this.ctx.strokeStyle = 'orange';
+          this.ctx.lineWidth = 6;
+          this.ctx.stroke();
+
+          this.ctx.restore();
+        }
+      }
+
+      class Icon {
+        constructor(drawer) {
+          this.drawer = drawer;
+          this.angle = 0;
+        }
+
+        draw() {
+          this.drawer.draw(this.angle);
+        }
+
+        update() {
+          this.angle += 12;
+        }
+
+        run() {
+          this.update();
+          this.draw();
+
+          setTimeout(() => {
+            this.run();
+          }, 100);
+        }
+      }
+
+      const canvas = document.querySelector('canvas');
+      if (typeof canvas.getContext === 'undefined') {
+        return;// 関数内でしか書けないので、即時関数内に入れている
+      }
+
+      const icon = new Icon(new IconDrawer(canvas));//インスタンス作成
+      icon.run();
+    })();
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- meta viewportは、スマホやタブレットのモバイル端末で最適にWeb表示させるため（Google推奨のレスポンシブWebデザイン適用時）に必要な欠かせないhtmlタグです。 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bingo</title>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+  <script>
+    {
+      const source = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,];//元配列といういみのSource
+
+      // この配列のランダムな位置から要素を取り出してみましょう。
+
+        //Math.floor(Math.random() * (14+1)); //この配列のインデックスは 0 から 14 までなので、0 から 14 までのランダムな整数値を求めるにはこう書く　小数点切り捨て　＆　0～１未満のランダム数生成
+
+        //Math.floor(Math.random() * source.length);//これは配列の中身の数が変わっても都度対応できる。
+
+
+
+        //ランダムな位置から 5 つの要素を取り出して、新しい配列を作ってみましょう。
+      const b = [];  //B 列の数値を作っていきたいので、いったん配列で宣言しておきます。
+
+      b[0] = source.splice(Math.floor(Math.random() * source.lenght),1);
+      b[1] = source.splice(Math.floor(Math.random() * source.lenght),1);
+      b[2] = source.splice(Math.floor(Math.random() * source.lenght),1);
+      b[3] = source.splice(Math.floor(Math.random() * source.lenght),1);
+      b[4] = source.splice(Math.floor(Math.random() * source.lenght),1); //最初の要素は、 splice() を使って source のランダムな位置のインデックスから 1 個取り出すとしてあげれば良いでしょう。
+      console.log(b);
+      }
+
+
+  </script>
+  
+
+  
+
+  <!-- <script src="./main.js"></script> -->
+</body>
+
+</html>
+
+
+

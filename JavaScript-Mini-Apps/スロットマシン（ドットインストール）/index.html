@@ -1,0 +1,252 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokie Machine</title>
+
+  <style>
+    body {
+      background: #bdc3c7;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+    }
+
+    main {
+      width: 300px;
+      background: #ecf0f1;
+      padding: 20px;
+      border: 4px solid #fff;
+      border-radius: 12px;
+      margin: 16px auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .panel img {
+      width: 90px;
+      height: 110px;
+      margin-bottom: 4px;
+    }
+
+    .stop {
+      cursor: pointer;
+      width: 90px;
+      height: 32px;
+      background: #ef454a;
+      box-shadow: 0 4px 0 #d1483e;
+      border-radius: 16px;
+      line-height: 32px;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+      /* ボタン連打でテキストが選択状態にならないようにする */
+      user-select: none;
+    }
+
+    #spin {
+      cursor: pointer;
+      width: 280px;
+      height: 36px;
+      background: #3498db;
+      box-shadow: 0 4px 0 #2880b9;
+      border-radius: 18px;
+      line-height: 36px;
+      text-align: center;
+      color: #fff;
+      user-select: none;
+      margin: 0 auto;
+    }
+
+    /* // 次に unmatch() メソッドですね。どうするかというと、マッチしなかったときは、薄く表示したいので、このクラスのインスタンスの img に対して classList を使って unmatched クラスをつけていきましょう。 */
+    .unmatched {
+      opacity: 0.5;
+    }
+
+    /* For spin button */
+    .inactive {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <!-- <section class="panel">
+      <img src="img/seven.png">
+      <div class="stop">STOP</div>
+    </section> -->
+
+  </main>
+
+  <div id="spin">SPIN</div>
+
+  <script>
+    'use strict';
+
+    {
+      class Panel {
+        // section だけ const で定数にしたのは、 section はこのコンストラクターの中でしか使わないから
+        // constructor()で要素の生成
+        constructor() {
+          const section = document.createElement('section'); // sectionの要素を作る
+          section.classList.add('panel');
+
+          // img と stop に this をつけたのは、このクラス(Panel)のほかのメソッドから呼び出したいからという理由になります。
+          // thisはPanelを指す。 Panelにimgタグを生成してやる
+          this.img = document.createElement('img');
+          this.img.src = this.getRandomImage(); //　そしてその要素はここから取得。　なお、この画像をコンストラクターで指定するところでも、 getRandomImage を使ってあげると、なお良いでしょう。(リロードの度に画像が変わるようになる)
+
+          //  timeout プロパティはこのあたりで初期化しておきましょう。 最初は値が定まっていないので、明示的に undefined としておきます。
+          // setTimeout() の返り値にしてあげます。
+          this.timeoutId = undefined;
+          //なせthis.timeoutId = undefined;設定しますか？
+
+          // timeoutId の値を undefined にしている理由ですが、
+          // クラスのプロパティはコンストラクタに書いておいたほうが分かりやすい。
+          // ただ、プロパティについて this.timeoutId; とだけ書くようなことは、あまりしないので、何か値を代入することにしたい。
+          // let で初期化せずに変数を宣言した場合は undefined が入るので、今回もそれを使うのがよさそう。
+          // といった経緯で決まったことでした。
+          // まとめると、this.timeoutId = undefined; の一行は、なくても動作はしますが、あったほうが分かりやすいだろう、ということで入れているコードになります。
+
+
+
+
+          this.stop = document.createElement('div');
+          this.stop.textContent = "Stop!!";
+          this.stop.classList.add('stop', 'inactive');
+
+          // stopボタンを作っていく。setTimeout を止めたいので、 clearTimeout() としてあげます。
+          // この clearTimeout() に渡す、 timeoutId が必要なのですが、データの構造がわかりやすくなるように、これも panel クラスのプロパティにしてあげましょう。
+          this.stop.addEventListener('click', () => {
+            // stop buttonを三回押したときに薄くなるのを防ぐ
+            if (this.stop.classList.contains("inactive")) {
+              return;
+            }
+            this.stop.classList.add("inactive");
+            clearTimeout(this.timeoutId);
+
+            // 数値を STOP ボタンを押すたびに、 1 減らしていけばいく
+            panelsLeft--;
+
+            // 0になった時結果の判定をする
+            if (panelsLeft === 0) {
+              // 結果判定をしたあとに SPIN ボタンを押せるようにしていきましょう。（リセットしてやる）
+              spin.classList.remove("inactive");
+              panelsLeft = 3;
+              checkResult();
+            }
+
+          });
+
+          // img, stopをsectionの子要素として追加
+          section.appendChild(this.img);
+          section.appendChild(this.stop);
+
+          // 取得してから <main>にsectionを追加
+          const main = document.querySelector('main');
+          main.appendChild(section);
+        }
+
+        // 選ぶ対象となる画像のファイル名を配列で宣言しておきましょう。
+        getRandomImage() {
+          const images = [
+            'img/seven.png',
+            'img/bell.png',
+            'img/cherry.png'
+          ];
+          // ランダムにとったものをreturnで返してやる　Math.random()で取得できるのは0以上1未満のランダムな浮動小数点ですので、今回必要なのは整数のためMath.floorを使って小数点以下を切り捨てています
+          return images[Math.floor(Math.random() * images.length)];
+        }
+
+
+        // 下でspin()として呼び出のコードを作ったので、Panel内のここに spinメソッドを定義していく。画像を設定してあげればいいので、 this の img の src プロパティをランダムな画像のファイル名にしたいので、そのあたりの処理は getRandomImage というメソッドにまとめてしまうことにして、こちらでその内容を書いていきましょう。 thisは Panelのこと。
+        spin() {
+          this.img.src = this.getRandomImage();
+          // スロットを回り続けさせるために、SPIN の処理を一定時間ごとに繰り返してあげればいいので、今回は setTimeout を使っていきましょう。
+          this.timeoutId = setTimeout(() => {
+            this.spin();
+          }, 50); // 00.5秒毎にthis.spin()を繰り返す。
+        }
+
+        // 比較するべきほかのふたつのパネルは p1 と p2 で受け取ってあげます。
+        // ここでどうするかというと、このクラスのインスタンスの img の src プロパティが、ほかの img の src プロパティと異なっている場合に true を返してあげて、そうでなかったら false を返してあげれば良いのではないでしょうか。
+        isUnmatched(p1, p2) {
+          // if (this.img.src !== p1.img.src && this.img.src !== p2.img.src) {
+          //   return true;
+          // } else {
+          //   return false;
+          // }
+          return this.img.src !== p1.img.src && this.img.src !== p2.img.src;
+        }
+        unmatch() {
+          this.img.classList.add('unmatched');
+        }
+        activate() {
+          this.img.classList.remove("unmatched");
+          this.stop.classList.remove("inactive");
+        }
+
+      }
+
+      // このパネルがほかのパネルとマッチしたかの判定はとりあえずメソッドにしたいので、 isUnmatched() としてあげて、ほかのふたつのパネルを引数で渡してあげましょう。
+      // こちらの条件が true になった場合、つまりほかの 2 枚とマッチしなかった場合は panels[0] に対して unmatch() というメソッドを呼んであげて、色を薄くしてあげましょう。
+      const checkResult = () => {
+        if (panels[0].isUnmatched(panels[1], panels[2])) {
+          panels[0].unmatch();
+        }
+        if (panels[1].isUnmatched(panels[0], panels[2])) {
+          panels[1].unmatch();
+        }
+        if (panels[2].isUnmatched(panels[0], panels[1])) {
+          panels[2].unmatch();
+        }
+      }
+
+
+      // HTMLの <main>の中にｊｓで要素を追加していく （インスタンスの作成したものを予備出し。）
+      const panels = [
+        new Panel(),
+        new Panel(),
+        new Panel()
+      ];
+
+      // あといくつ動いているパネルが残っているかをまずは変数で保持しておきましょう。
+      let panelsLeft = 3;
+
+
+
+
+
+      // spin buttonにクリックイベントを付与　spinボタンが押されたら発動
+      const spin = document.getElementById('spin');
+      spin.addEventListener("click", () => {
+        // クラス（スタイル付け）を付与するかどうか判定
+        if (spin.classList.contains("inactive")) {
+          return;
+        }
+        spin.classList.add("inactive");
+        panels.forEach(panel => {
+          panel.activate(); // メソッド
+
+          // panel クラスの spin というメソッドにまとめることにしたいので panel の spin メソッドを呼び出せばいいですね。
+          panel.spin();
+        });
+      });
+
+    }
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

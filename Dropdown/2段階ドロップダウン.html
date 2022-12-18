@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdonw menu</title>
+
+  <!-- //jQueryのCDN -->
+  <script src="https://code.jquery.com/jQuery v3.6.0.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font: 14px Helvetica, Sans-Serif;
+      background-color: green;
+    }
+
+    #page-wrap {
+      width: 800px;
+      margin: 25px auto;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    p {
+      margin: 15px 0;
+    }
+
+    ul.dropdown {
+      position: relative;
+    }
+
+    ul.dropdown li {
+      font-weight: 700;
+      float: left;
+      zoom: 1;
+      background: #ccc;
+    }
+
+    ul.dropdown a:active {
+      color: orange;
+    }
+
+    ul.dropdown li a {
+      display: block;
+      border-right: 1px solid #333;
+      color: #222;
+      padding: 4px 8px;
+    }
+
+    ul.dropdown li:last-child a {
+      border-right: none;
+    }
+
+    ul.dropdown li.hover,
+    ul.dropdown li:hover {
+      background: #F3D673;
+      color: #000;
+      position: relative;
+    }
+
+    ul.dropdown ul {
+      width: 220px;
+      visibility: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+
+    ul.dropdown ul li {
+      font-weight: 400;
+      background: #f6f6f6;
+      color: #000;
+      border-bottom: 1px solid #ccc;
+      float: none;
+    }
+
+    ul.dropdown ul li a {
+      border-right: none;
+      width: 100%;
+      display: inline-block;
+    }
+
+    ul.dropdown ul ul {
+      left: 100%;
+      top: 0;
+    }
+
+    ul.dropdown li:hover>ul {
+      visibility: visible;
+    }
+
+    ul.dropdown a:hover,
+    ul.dropdown li.hover a {
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="page-wrap">
+
+    <ul class="dropdown">
+      <li><a href="#">First Person Shooters</a>
+
+        <ul class="sub_menu">
+          <li>
+            <a href="#">Counter Strike</a>
+
+            <ul>
+              <li><a href=”#”>Counter Strike
+                  1.6</a></li>
+              <li><a href=”#”>Counter Strike:
+                  Source</a></li>
+              <li><a href=”#”>Counter Strike:
+                  Global Offensive</a></li>
+            </ul>
+          </li>
+
+
+
+
+
+
+
+
+
+
+          <li>
+            <a href=”#”>Team Fortress </a>
+            <ul>
+              <li><a href=”#”>Team Fortress
+                  Classic</a></li>
+              <li><a href=”#”>Team Fortress
+                  2</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href=”#”>Portal</a>
+            <ul>
+              <li><a href=”#”>Portal</a></li>
+              <li><a href=”#”>Portal
+                  2</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+
+
+
+      <li><a href=”#”>Real Time Strategy</a>
+        <ul class=”sub_menu”>
+          <li><a href=”#”>Dawn of War</a></li>
+          <li><a href=”#”>Warcraft 3</a></li>
+          <li><a href=”#”>Starcraft II</a></li>
+        </ul>
+      </li>
+
+
+      <li><a href=”#”>Simulators</a>
+        <ul class=”sub_menu”>
+          <li><a href=”#”>Goat Simulator</a></li>
+          <li><a href=”#”>Train Simulator</a></li>
+          <li><a href=”#”>Sim City</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+
+
+
+
+  <script>
+    $(function () {
+      $("ul.dropdown li").hover(function () {
+        $(this).addClass("hover");
+        $('ul:first', this).css('visibility', 'visible');
+      }, function () {
+        $(this).removeClass('hover');
+        $('ul:first', this).css('visibility', 'hidden');
+      });
+      
+      $("ul.dropdown li:has(ul.sub_menu)").find("a:first").append("v");
+      $("ul.dropdown li ul li:has(ul)").find("a:first").append(" &raquo;");
+    });
+
+    $('.options').change(function () {
+      var id = this.id;
+      if (id == "base") {
+        $('ul.dropdown li').css('background', $('#' + id).val());
+      }
+    });
+  </script> 
+
+
+ <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

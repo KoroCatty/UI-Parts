@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    nav {
+      background-color: gray;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding-right:30px;
+      padding-left:30px;
+    }
+.logo {
+  width: 15%;
+}
+.logo img{
+  width: 100%;
+}
+ul{
+  list-style: none;
+}
+
+.menu-ctn > li{ /* こうすることで、子供だけにかかる。子供の子供までかからなくする */
+  display: inline-block;
+  background-color: white;
+  padding:10px 15px;
+  transition: all 0.8s ease;
+  position: relative;
+
+}
+
+
+.menu-ctn li a{
+  text-decoration: none;
+}
+.menu-ctn li:hover{
+  cursor:pointer;
+  background-color: lightblue;
+}
+#dropdown{
+  display: none;
+  position:absolute;
+  width:100%;
+  background-color: red;
+  z-index: 1;
+  text-align: center;
+  left:0;
+  top:100%;
+}
+#dropdown.active {   /* There's no space between them, which means I select both of them. */
+  display:block;
+}
+
+#dropdown li {
+  padding: 10px 15px;
+}
+
+
+
+
+
+
+
+
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="imgs/2.jpg" alt="">
+    </div>
+
+  <ul class="menu-ctn">
+    <li>
+      <a href="">Home</a>
+    </li>
+
+    <li id="menu">
+      <!-- <a href=""> -->
+        My Shop
+      <!-- </a> -->
+      <ul id="dropdown" >
+        <li>
+          <a href="">item1</a>
+        </li>
+        <li>
+          <a href="">item2</a>
+        </li>
+        <li>
+          <a href="">item3</a>
+        </li>
+      </ul>
+
+    </li>
+
+
+
+
+
+    <li>
+      <a href="">About</a>
+    </li>
+    <li>
+      <a href="">Contact</a>
+    </li>
+  </ul>
+
+</nav>
+
+
+
+<script>
+document.getElementById("menu").addEventListener("click", openMenu);
+
+function openMenu(){
+document.getElementById("dropdown").classList.toggle("active"); //classList allow you to access to CSS class.
+
+}
+
+</script>
+</body>
+
+</html>

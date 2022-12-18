@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JQueryUI Draggable Tutorial</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="jquery-ui.min.css">
+  <script src="jquery-ui.min.js"></script>
+  <style>
+    .draggable {
+      width: 100px;
+      height: 100px;
+      background-color: crimson;
+    }
+
+    .droppable {
+      width: 300px;
+      height: 300px;
+      border: 2px solid gray;
+      display: inline-block;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="droppable">
+    <div class="draggable"></div>
+  </div>
+  <div class="droppable"></div>
+  <h1></h1>
+  <script>
+    $(function () {
+      $('.draggable').draggable();
+      $('.dd').droppable({
+        tolerance: 'touch',
+        over: function (event, ui) {
+          $(this).css('background-color', 'lightblue')
+        },
+        drop: function (event, ui) {
+          $(this).css('background-color', 'lightyellow')
+        },
+        out: function (event, ui) {
+          $(this).css('background-color', '')
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

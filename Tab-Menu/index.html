@@ -1,0 +1,176 @@
+HTML CSS JSResult Skip Results Iframe
+EDIT ON
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <title>5-4-1 タブメニュー</title>
+<meta name="description"  content="書籍「動くWebデザインアイディア帳」のサンプルサイトです">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-4-1/css/5-4-1.css">
+
+<style>
+  /*tabの形状*/
+.tab{
+  display: flex;
+  flex-wrap: wrap;
+}
+.tab li a{
+  display: block;
+  background:#ddd;
+  margin:0 2px;
+  padding:10px 20px;
+}
+/*liにactiveクラスがついた時の形状*/
+.tab li.active a{
+  background:#fff;
+}
+
+
+/*エリアの表示非表示と形状*/
+.area {
+  display: none;/*はじめは非表示*/
+  opacity: 0;/*透過0*/
+  background: #fff;
+  padding:50px 20px;
+}
+
+/*areaにis-activeというクラスがついた時の形状*/
+.area.is-active {
+    display: block;/*表示*/
+    animation-name: displayAnime;/*ふわっと表示させるためのアニメーション*/
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes displayAnime{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+/*========= レイアウトのためのCSS ===============*/
+
+body{
+  background:#eee;
+}
+
+ul{
+  list-style:none;
+}
+
+a{
+  color:#333;
+  text-decoration: none;
+}
+
+.wrapper{
+  width:100%;
+  max-width: 960px;
+  margin:30px auto;
+    background:#fefefe;
+}
+
+.area h2{
+  font-size:1.3rem;
+  margin:0 0 20px 10px;
+}
+
+.area li{
+  padding: 10px; 
+  border-bottom: 1px solid #ddd;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+  <ul class="tab">
+    <li><a href="#lunch">ランチ</a></li>
+    <li><a href="#drink">ドリンク</a></li>
+    <li><a href="#dinner">ディナー</a></li>
+  </ul>
+
+    <div id="lunch" class="area">
+      <h2>ランチ</h2>
+      <ul>
+        <li>ガパオライス</li>
+        <li>ミートソーススパゲティ―</li>
+        <li>ハンバーグ定食</li>
+      </ul>
+    <!--/area--></div>
+    <div id="drink" class="area">
+      <h2>ドリンク</h2>
+      <ul>
+        <li>ウーロン茶</li>
+        <li>オレンジジュース</li>
+        <li>ジンジャーエール</li>
+      </ul>
+    <!--/area--></div>
+    <div id="dinner" class="area">
+      <h2>ディナー</h2>
+      <ul>
+        <li>カレーライス</li>
+        <li>ドリア</li>
+        <li>グラタン</li>
+      </ul>
+    <!--/area--></div>
+<!--wrapper--></div>
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-4-1/js/5-4-1.js"></script>
+
+<script>
+  //任意のタブにURLからリンクするための設定
+function GethashID (hashIDName){
+  if(hashIDName){
+    //タブ設定
+    $('.tab li').find('a').each(function() { //タブ内のaタグ全てを取得
+      var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得 
+      if(idName == hashIDName){ //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
+        var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
+        $('.tab li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
+        $(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
+        //表示させるエリア設定
+        $(".area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
+        $(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加 
+      }
+    });
+  }
+}
+
+//タブをクリックしたら
+$('.tab a').on('click', function() {
+  var idName = $(this).attr('href'); //タブ内のリンク名を取得  
+  GethashID (idName);//設定したタブの読み込みと
+  return false;//aタグを無効にする
+});
+
+
+// 上記の動きをページが読み込まれたらすぐに動かす
+$(window).on('load', function () {
+    $('.tab li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
+    $('.area:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
+  var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
+  GethashID (hashName);//設定したタブの読み込み
+});
+
+</script>
+</body>
+
+</html>
+
+

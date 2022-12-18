@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+
+    body {
+      background-color: #fbf37c;
+    }
+
+    p,
+    h1 {
+      font-family: "Open Sans";
+      transition: .4s;
+      transition-timing-function: ease-in-out;
+    }
+
+    h1 {
+      font-size: 35px;
+    }
+
+    p {
+      font-size: 25px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    button {
+      margin-top: 8vh;
+      width: 80px;
+      height: 80px;
+      background-color: #58555A;
+      color: #fbf37c;
+      margin-right: 50px;
+      border: none;
+      font-size: 30px;
+      user-select: none;
+      /* CSS のプロパティで、ユーザーが文章を範囲選択できるかどうかを制御します。 これは、テキストボックスを除いて、クロームとして読み込まれたコンテンツには何の影響も与えません。 */
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Increase / Decrease buttons -->
+    <button onclick="changeFontSize('increase')">A+</button>
+    <button onclick="changeFontSize('decrease')" >A-</button>
+
+    <!-- Header and Paragraph -->
+    <h1 id="h">Change FOnt-Size using JS</h1>
+    <p id="p"> It is a long established fact that a reader will be distracted by the readable content of a page when
+      looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+      letters, as opposed to using 'Content here, content here', making it look English. It is a long established fact
+      that a reader will be distracted by the readable content of a page when looking at its layout. The point of using
+      Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+      content here', making it look English.</p>
+
+  </div>
+  <script>
+function changeFontSize(type){
+// console.log(type);
+//Ids to select
+let ids = ["#h", "#p"];
+
+ids.forEach(id =>{
+  // Get element
+  let el = document.querySelector(id);
+
+  // Get font size
+  //getComputedStyle() 有効なスタイルシートを適用し、それらの値が含む基本的な値の算出が行われた後の、要素の全てのCSSプロパティの値を取得するメソッドです。
+  let fontSize = window.getComputedStyle(el, null).getPropertyValue("font-size")
+
+  // Convert to float
+  //parseFloat() parseFloat() 関数は、引数を (必要に応じてまず文字列に変換してから) 解釈し、浮動小数点値を返します。
+  fontSize = parseFloat(fontSize);
+
+  // Increase / Decrease font-size
+  if(type === "increase"){
+    el.style.fontSize = (fontSize + 5) + "px";
+  }else{
+    el.style.fontSize = (fontSize - 5) + "px";
+  }
+});
+}
+
+
+  </script>
+
+
+
+</body>
+
+</html>

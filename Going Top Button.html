@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .link-pagetop{
+  display:block;
+  position: fixed;
+  right: 40px;
+  bottom: -90px;
+  display: none;
+  color:orange ;
+  font-size: 45px;
+  transition: all 0.8s ease;
+  transform:translateY(-100px);
+}
+  </style>
+</head>
+<body>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+  <h1>THis is just test </h1>
+
+  <div class="fixed-button">
+    <a id="adding" style="display: block;">
+      <i class="fa-solid fa-circle-arrow-up"></i>
+      <span>このspanは消すやつ(これがスクロールボタン)</span>
+    </a>
+  </div>
+
+  <script>
+    // Top button 
+    window.addEventListener("scroll", function () {
+      let scroll = document.documentElement.scrollTop;
+      // document.getElementsById("scrollValue").textContent = scroll;
+      console.log(scroll);
+
+      //スクロール値が２００を超えたらid=addingのあるタグにlink-pagetopを付け足し、ｃｓｓに予め記載されたものが起動
+      if (scroll > 200) {
+        document.getElementById("adding").classList.add("link-pagetop");
+      }
+      //200以下で上で付加したものを取り除く
+      if (scroll < 200) {
+        document.getElementById("adding").classList.remove("link-pagetop");
+      }
+    }
+    );
+
+    const pagetopBtn = document.querySelector('#adding');
+    pagetopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+  </script>
+
+
+
+  
+</body>
+</html>

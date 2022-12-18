@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>9-6-2 ページを開くと、背景が暗くなり動画を表示</title>
+<meta name="description"  content="書籍「動くWebデザインアイディア帳」のサンプルサイトです">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-6-2/css/9-6-2.css">
+
+<style>
+  @charset "utf-8";
+
+
+/*========= モーダル表示のためのCSS ===============*/
+
+/*動画表示のモーダルの余白を変更したい場合*/
+.modaal-video .modaal-inner-wrapper{
+  padding:0;
+}
+
+/*モーダルのボタンの色を変更したい場合*/
+.modaal-close:after, 
+.modaal-close:before{
+  background:#ccc;  
+}
+
+.modaal-close:focus:after,
+.modaal-close:focus:before,
+.modaal-close:hover:after,
+.modaal-close:hover:before{
+  background:#666;
+}
+
+
+/*========= レイアウトのためのCSS ===============*/
+
+header{
+  background: #333;
+}
+
+h1{
+  font-size:1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px;
+  color: #fff;
+}
+
+h2{
+  font-size:1.2rem;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+ul{
+  list-style: none;
+}
+
+p,ul{
+  margin-top:20px;  
+}
+
+a{
+  color:#333;
+    outline: none;
+}
+
+small{
+  background:#333;
+  color:#fff;
+  display: block;
+  text-align: center;
+  padding:20px;
+}
+
+
+section{
+  padding:30px;
+}
+
+section:nth-child(2n){
+  background:#f3f3f3; 
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+</style>
+</head>
+<body>
+  <header id="header">
+    <h1>Logo</h1>   
+  </header>
+    
+  <main>
+    <section>
+    <h2>Area 1</h2>
+      <p>使用したライブラリ：<a href="http://humaan.com/modaal/" target="_blank">http://humaan.com/modaal/</a></p>
+      <p><a href="https://www.youtube.com/embed/Kq95zgCrxeY" class="video-open">動画を開く</a></p>
+    <!--/area1--></section>
+      <section>
+      <h2>Area 2</h2>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+
+    <!--/area2--></section>
+
+  <!--/main--></main>
+
+  <footer id="footer">
+    <small>&copy; copyright.</small>  
+  </footer>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-6-2/js/9-6-2.js"></script>
+
+<script>
+  
+//初回のみモーダルをすぐ出す判定。flagがモーダル表示のstart_open後に代入される
+var access = $.cookie('access')
+  if(!access){
+    flag = true;
+    $.cookie('access', false);
+  }else{
+    flag = false  
+  }
+  
+  //モーダル表示
+  $(".video-open").modaal({
+  start_open:flag, // ページロード時に表示するか
+  overlay_close:true,//モーダル背景クリック時に閉じるか
+  type: 'video',
+  background: '#28BFE7', // 背景色
+  overlay_opacity:0.8, // 透過具合
+  before_open:function(){// モーダルが開く前に行う動作
+    $('html').css('overflow-y','hidden');/*縦スクロールバーを出さない*/
+  },
+  after_close:function(){// モーダルが閉じた後に行う動作
+    $('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
+  }
+  });
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .accordion {
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    .accordion-trigger {
+      margin: 0;
+      padding: 10px;
+      display: block;
+      background: #333;
+      color: #FFF;
+      border-top: 1px solid #fff;
+    }
+
+    .accordion-contents {
+      margin: 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+<!-- 一つめのカタマリ -->
+  <div class="accordion" id="js-faq">
+    <!--hookとなるIｄを入れる。prefix （ｊｓ）を入れる事が多い-->
+    <p class="accordion-trigger">
+      Q1.人生に疲れたんですが、どうしたらいいですか？
+    </p>
+    <div class="accordion-contents">
+      A1.クソして寝ろ
+    </div>
+
+    <p class="accordion-trigger">
+      Q2.バナナはおやつに入りますか？
+    </p>
+    <div class="accordion-contents">
+      A2.グレーです。
+      より安全に事を進めるのであれば、バナナはカットして弁当箱に入れ、キャベツやトマトなどの野菜も同時に入れておくのです。<br>
+      そうすれば、最悪「これはサラダです」という言い訳が成立します。（フルーツサラダ）
+    </div>
+  </div>
+
+  <br><br><br>
+
+  <!-- 二つ目のカタマリ -->
+  <div class="accordion" id="js-accordion">
+    <a href="" class="accordion-trigger">
+      Q1.あああああ
+    </a>
+    <div class="accordion-contents">
+      A1.ああああああ
+    </div>
+
+    <a href="" class="accordion-trigger">
+      Q2.いいいいいい
+    </a>
+    <div class="accordion-contents">
+      A2.いいいいいい
+    </div>
+
+    <a href="" class="accordion-trigger">
+      Q3.うううううう
+    </a>
+    <div class="accordion-contents">
+      A3.うううううう
+    </div>
+  </div>
+
+  <br><br>
+
+  <!-- 三つ目のカタマリ -->
+  <dl class="accordion" id="js-accordion-mini">
+    <dt class="accordion-trigger">
+      Q1.あああああ
+    </dt>
+    <dd class="accordion-contents">
+      A1.ああああああ
+    </dd>
+  </dl>
+
+
+
+  <script>
+    (() => {
+
+      class Accordion { //クラスとインスタンスのクラス（いつも大文字））
+
+        //初期化　（クラスが呼ばれた瞬間にこれが実行される）
+        constructor(obj) { //インスタンスを呼び出すためにここに何でもいいから引数を入れる
+
+          console.log('obj', obj.hookName);//インスタンスで設定したものをこうして呼び出せる
+
+          const $elm = document.querySelector(obj.hookName);
+          const $trigger = $elm.getElementsByTagName(obj.tagName);// $elmの中のtagNameということ
+
+          const triggerLen = $trigger.length;// 2が入る
+          let index = 0; //これはカウンターという
+
+          //ループさせることで、triggerの全てにaddEventListenerをかける
+          while (index < triggerLen) {
+            // [index]に対して、クリックイベントを持たせ、実行された時にこのclickHandler()を呼び出す
+            $trigger[index].addEventListener('click', (e) => this.clickHandler(e));//クラスの中で関数をした場合は this を入れないといけない。この場合のthisはクラスそのもの(Accordion)を参照する
+            index++; //これを入れないと無限ループが起こる
+          }
+          // クラスの中で関数を呼ぶ(this必要)
+          this.actionUnko();
+        }
+
+
+actionUnko(){
+  console.log("Hello world Unko");
+}
+
+
+
+
+
+
+
+        //クリックしたら実行される処理　(上で定義したclickHandler()の中身)
+        clickHandler(e) { //(e)はイベントのオブジェクト ここにconstがあったが、消した。
+          e.preventDefault();//クリックしてリンクを殺して、実際にイベント(e)だけを呼び出す
+
+          const $target = e.currentTarget;// currentTargetは、クリックされた要素を取得するもの
+          const $content = $target.nextElementSibling; // $targetの次の要素を取ってくる
+
+          if ($content.style.display === 'block') {// CSSを見に行き、display:block;だったら実行
+            $content.style.display = 'none';
+          } else {
+            $content.style.display = 'block';
+          }
+        }
+      }
+
+
+
+      
+// インスタンス生成　　必ず変数を指定してやること
+      const fuckingAccordion = new Accordion({
+        hookName: '#js-faq',
+        tagName: 'p'
+      });
+
+      const dummyAccordion = new Accordion({
+        hookName: '#js-accordion',
+        tagName: 'a'
+      });
+
+      const miniAccordion = new Accordion({
+        hookName: '#js-accordion-mini',
+        tagName: 'dt'
+      });
+
+
+    })();
+
+  </script>
+</body>
+
+</html>

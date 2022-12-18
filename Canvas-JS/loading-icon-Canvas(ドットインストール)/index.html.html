@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>My Loading Icon</title>
+  <style>
+    body {
+      background: #eee;
+    }
+
+    canvas {
+      background: #fff;
+      width:100%;
+      height:100%;
+    }
+
+    .loadingText {
+      font-size: 20px;
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 600;
+      color:rgb(207, 207, 207);
+      color:rgb(119, 119, 119);
+    }
+  </style>
+</head>
+
+<body>
+  <p class="loadingText">LOADING...</p>
+  <!-- <canvas width="400" height="260"> -->
+    <canvas>
+    Canvas not supported.
+  </canvas>
+
+
+
+
+  <script>
+    /* // 即時関数　 IIFE (Immediately Invoked Function Expression）　即時関数は定義すると即時に実行されます。このため、即時関数とよばれます。 */
+    (() => {
+      //クラスを書いていく
+      class Icon {
+        constructor(canvas) {
+          this.ctx = canvas.getContext('2d');
+          // --------------------------------------------------------------
+          this.width = canvas.width;
+          this.height = canvas.height;
+          this.r = 15; // 円の大きさ
+
+          this.angle = 0;//座標空間を何度回転させるかかく
+        }
+        // drawメソッド　（描画の為）
+        draw() {
+          // 描画したオレンジの粒を消していく。　canvasの領域全体を半透明の白で塗りつぶすというテクニックがよく使われます。
+          // 最初の目盛りが描画されて、次が描画される時に半透明の白が重ねられるので、薄くなっていきます。
+          this.ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+          this.ctx.fillRect(0, 0, this.width, this.height); //領域全体を fillRect() で塗りつぶしてあげます。
+
+          // save
+          this.ctx.save(); //translate() や rotate() を繰り返しているので、座標空間の原点が移動して変な挙動をしてしまうので、saveしてからrestoreしないといけない
+
+
+
+          // 円をかく
+          // this.ctx.beginPath();//beginPath()メソッドは、現在のパスをリセットする際に使用します。 beginPath()は、“現在のパスをリセットする” 役割しかありません。 実際に何らかのパスや図形を作成するには、 moveTo(x, y)・ lineTo(x, y)・ closePath()などのメソッドを併用する必要があります。
+
+          // // arc() ですが、 canvas の中心を中心としつつ、半径は r 、そして 0 度から 360 までなので、 0 , 2 * Math.PI と書いてあげればいいでしょう。
+          // this.ctx.arc(this.width / 2, this.height / 2, this.r, 0, 2 * Math.PI);//arc() メソッド とは、 <canvas> 要素の二次元文脈に於いて、任意の位置に円弧の描画を指定するメソッドです。 arc() メソッドでは描画を指定するだけで、実際には fill() メソッドまたは stroke() メソッドを実行しない限り円弧は描画されません。 Math.PIプロパティを使って円周率を取得する
+
+          // this.ctx.stroke();//stroke() メソッド とは、 <canvas> 要素の二次元文脈に於いて、現在のパスにある描画サブパスを線描画するメソッドです。 具体的には、現在のパスにあるサブパスの各点を順番に繋いで描画します。 描画に用いられる色やスタイルは、 strokeStyle プロパティで指定されたものとなります。
+
+
+          // 座標の始まりを円の中心に持ってくる
+          // オレンジの粒を打つたびに座標計算してられない。なので今は左上にある座標空間の原点を canvas の中心に持ってきてあげて、ここを中心に座標空間ごと回転させながら目盛りを描画していくというテクニックを使ってみます
+          this.ctx.translate(this.width / 2, this.height / 2);
+          this.ctx.rotate(Math.PI / 180 * this.angle); // 円を回転させる   回転する角度はラジアンに変換しないといけないので、 Math.PI / 180 * this.angle のように書いてあげましょう。
+
+
+
+
+
+          // Insert Texts
+          // this.ctx.font = 'bold 64px Verdana';
+          // this.ctx.textAlign = 'right'; // 横方向
+          // this.ctx.textBaseline = 'top'; // 縦方向
+          // this.ctx.fillText('Loading', 0, 0, 10);//表示させたい文字列と表示させる位置の座標を渡してあげます。fillText(text, x, y [, maxWidth])
+
+          // オレンジの粒をかいていく
+          this.ctx.beginPath();
+          // this.ctx.moveTo(this.width / 2, this.height / 2 - this.r - 5);
+          // this.ctx.lineTo(this.width / 2, this.height / 2 - this.r + 5);
+          this.ctx.moveTo(0, -this.r - 5);
+          this.ctx.lineTo(0, -this.r + 4);
+          this.ctx.strokeStyle = 'lightblue';
+          this.ctx.lineWidth = 1.5;
+
+          this.ctx.stroke();
+
+          this.ctx.restore(); // saveした原点をここで元に戻す
+        }
+
+
+
+        //更新系の処理はこれにまとめる
+        update() {
+          this.angle += 12; // 12度ずつ増やす
+        }
+
+        // runメソッド
+        run() {
+          this.update();// this has to be Before draw method
+          this.draw();
+
+          // run() を繰り返し実行したいので、 setTimeout() を使ってあげます
+          setTimeout(() => {
+            this.run();
+          }, 100); //回転する速さ
+        }
+      }
+
+
+
+      const canvas = document.querySelector('canvas');
+      if (typeof canvas.getContext === 'undefined') {//getContext()は、グラフィックを描画するためのコンテキストを取得するためのメソッドです。 引数でコンテキストを表す文字列を指定します。 ブラウザが対応していない文字列を指定した場合、 null が返ります。 それぞれのコンテキストを利用して、canvas要素の領域にグラフィックを描画できます。
+        return; //returnは関数の中でしか使えないので、即時関数を取り入れた
+      }
+      //インスタンス作成
+      const icon = new Icon(canvas);
+      icon.run();
+    })();
+
+
+
+  </script>
+</body>
+
+</html>

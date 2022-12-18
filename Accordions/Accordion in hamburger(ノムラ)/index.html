@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+
+<body>
+
+
+  <!-- Accordiion in Hamburger  -->
+  <div class="section s_01">
+    <!-- ホーム -->
+    <div class="accordion_one">
+      <div class="accordion_header">
+        <a href="" class="accordion__header--link accordion__noContents">
+          ホーム
+        </a>
+      </div>
+    </div>
+
+
+    <!--  会社概要-->
+    <div class="accordion_one">
+      <div class="accordion_header">
+        <a href="" class="accordion__header--link">
+          会社概要
+        </a>
+        <div class="i_box"><i class="one_i"></i></div>
+      </div>
+      <div class="accordion_inner">
+        <div class="box_one">
+          <p class="txt_a_ac">
+            <a href="" class="accordion_inner--text">
+              <p class="txt_a_ac">ごあいさつ</p>
+            </a>
+            <a href="" class="accordion_inner--text">
+              <p class="txt_a_ac">商品案内</p>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ノムラの技術 -->
+    <div class="accordion_one">
+      <div class="accordion_header">
+        <a href="" class="accordion__header--link">
+          ノムラの技術
+        </a>
+        <div class="i_box"><i class="one_i"></i></div>
+      </div>
+      <div class="accordion_inner">
+        <div class="box_one">
+          <p class="txt_a_ac">
+            <a href="" class="accordion_inner--text">
+              <p class="txt_a_ac"></p>
+            </a>
+            <a href="" class="accordion_inner--text">
+              <p class="txt_a_ac">商品案内</p>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 事業内容 -->
+    <div class="accordion_one">
+      <div class="accordion_header">
+        <a href="" class="accordion__header--link">
+          事業内容
+        </a>
+        <div class="i_box"><i class="one_i"></i></div>
+      </div>
+      <div class="accordion_inner">
+        <div class="box_one">
+          <p class="txt_a_ac">
+            <a href="" class="accordion_inner--text">
+              <p class="txt_a_ac">台形ねじ</p>
+            </a>
+            <a href="" class="accordion_inner--text">
+              <p class="txt_a_ac">スパイラルネジ</p>
+            </a>
+            <a href="" class="accordion_inner--text">
+              <p class="txt_a_ac">長尺ネジ</p>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 採用情報 -->
+    <div class="accordion_one">
+      <div class="accordion_header">
+        <a href="" class="accordion__header--link">
+          採用情報
+        </a>
+        <div class="i_box"><i class="one_i"></i></div>
+      </div>
+      <div class="accordion_inner">
+        <div class="box_one">
+          <p class="txt_a_ac">
+            <a href="" class="accordion_inner--text">
+              <p class="txt_a_ac">よくある質問</p>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- お問い合わせ -->
+    <div class="accordion_one">
+      <div class="accordion_header">
+        <a href="" class="accordion__header--link">
+          お問い合わせ
+        </a>
+        <div class="i_box"><i class="one_i"></i></div>
+      </div>
+      <div class="accordion_inner">
+        <div class="box_one">
+          <p class="txt_a_ac">
+            <a href="" class="accordion_inner--text">
+              <p class="txt_a_ac">よくある質問</p>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <p class="_a"><a href="https://125naroom.com/web/3046" target="_blank" class="link">View the note</a></p>
+  </div> -->
+  </head>
+
+
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script>
+
+    $(function () {
+      //.accordion_oneの中の.accordion_headerがクリックされたら
+      $('.s_01 .accordion_one .accordion_header').click(function () {
+
+        //クリックされた.accordion_oneの中の.accordion_headerに隣接する.accordion_innerが開いたり閉じたりする。
+        $(this).next('.accordion_inner').slideToggle();
+        $(this).toggleClass("open");
+      });
+
+         /* 各代表項目のリンクがクリックされた際NoMoveを付与 */
+    $('.accordion__header--link').click(function () {
+      // iconを非表示にする
+      $('.s_01 .accordion_one .accordion_header .i_box').toggleClass("NoMove");
+
+      // 中身を非表示にする
+      $('.accordion_inner').toggleClass("NoShow");
+    });
+
+
+    // 項目がないものは表示しない
+//     $('.accordion__noContents').click(function () {
+//       $('.accordion_inner').toggleClass("NoShow");
+// // $(this).toggleClass("open");
+// });
+
+    })
+
+ 
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

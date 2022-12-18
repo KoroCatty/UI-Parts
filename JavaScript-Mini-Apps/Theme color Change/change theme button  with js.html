@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <!-- Changing Theme color buttons -->
+    <div class="buttons">
+      <button id="bttn1" class="theme_color_button" type="button" onclick="changeColor('rgb(53, 53, 53)','white')">Dark</button>
+      <button id="bttn2" class="theme_color_button2" type="button" onclick="changeColor('white','black')">Bright</button>
+      <button id="bttn2" class="theme_color_button3" type="button" onclick="changeColor('rgb(224, 212, 212)','white')">Gentle</button>
+    </div>
+  
+    <script>
+      // To change the Theme color
+      function changeColor(color, color2) {
+        document.body.style.background = color;
+        document.body.style.color = color2;
+      }
+    </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script type="text/javascript" src="http://www.pureexample.com/js/lib/jquery.ui.touch-punch.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment</title>
+  <link rel="stylesheet" href="style.css?<?php echo time(); ?>">
+  <style>
+    body {
+  width: 1350px;
+  margin: auto;
+}
+
+body #entire {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 30px;
+}
+
+.container {
+  width: 70%;
+  height: 700px;
+  background-color: #464646;
+  margin-bottom: 20px;
+}
+
+.small_container {
+  width: 24%;
+  height: 700px;
+  background-color: #4b494a;
+}
+
+.heading {
+  border: 1px #fffcfc solid;
+  width: 300px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 600;
+  padding: 20px 0;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.drop_area {
+  border: 1px #eeeeee solid;
+  width: 95%;
+  height: 530px;
+  margin: auto;
+}
+
+#demo {
+  font-size: 30px;
+}
+
+.title {
+  border: 1px black solid;
+  font-size: 18px;
+}
+
+.time_and_date {
+  width: 300px;
+  height: 200px;
+  background-color: #e8e8f7;
+  margin-top: 5px;
+}
+
+.time_and_date p {
+  margin: 0;
+}
+
+.DateTimeDisp {
+  margin: 0;
+}
+
+.forms {
+  height: 200px;
+  width: 300px;
+  background-color: #e8e8f7;
+  margin-bottom: 10px;
+}
+
+.form {
+  margin-top: 10px;
+}
+
+.form.first {
+  margin-top: 0;
+}
+
+#form {
+  height: 00px;
+}
+
+.tab_menu {
+  width: 300px;
+  height: 200px;
+  background-color: #e8e8f7;
+  margin-top: 60px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu li a {
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+  padding: 8px 0;
+  color: #333;
+  text-decoration: none;
+}
+
+/* activeと名付けたクラスで初期状態で選ばれているようにする */
+.menu li a.active {
+  background-color: #292929;
+  color: #fff;
+  border-radius: 4px 4px 0 0;
+  /* 左上と右上だけ 4px の角丸が設定されるはずです */
+}
+
+.menu li a:not(.active):hover {
+  /* このように書いてあげると、 li の下の階層の a 要素のうち、 active ではないものにホバーしたときのスタイル指定することができます */
+  opacity: 0.5;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+
+.content.active {
+  background-color: #292929;
+  color: #fff;
+  display: block;
+  /*  display: block; を指定すると display: none; が上書きされて消えることになります．*/
+  min-height: 100px;
+  /* min-heightを使えば文章が増えても自動で高さを調整して表示してるようになります。 */
+  padding: 12px;
+}
+
+.content {
+  display: none;
+  /* activeになっていないところはこれで非表示にしてやる */
+}
+    .squaredotted {
+      width: 300px;
+      height: 200px;
+      line-height: 80px;
+      border: 1px dotted gray;
+      margin-bottom: 5px;
+      margin-left: 5px;
+      text-align: center;
+      float: left;
+      color: gray;
+      background-color: lightgray;
+    }
+  </style>
+</head>
+
+<body onload="LoadProc();">
+  <div id="entire">
+    <div class="container">
+      <p class="heading">Heading</p>
+
+      <div class="drop_area">
+        <div style="float:left;margin:30px 50px 30px 30px;">
+          <div class="squaredotted">1</div>
+          <div class="squaredotted">2</div>
+          <div class="squaredotted">3</div>
+        </div>
+
+
+      </div>
+      <!-- drop_area -->
+
+    </div>
+    <!-- container -->
+
+    <div class="small_container">
+      <!-- drop and drop tiles-->
+      <!-- <div style="float:left">
+          <div class="square">1</div>
+          <div class="square">2</div>
+          <div class="square">3</div>
+        </div> -->
+
+
+
+
+      <div class="time_and_date square">
+        <!-- <p>fkdjf</p> -->
+        <div class="texts">
+          <p class="title">Widget 1 - Time and Date</p>
+          Current Time and Date:
+          <div id="DateTimeDisp"></div>
+        </div>
+      </div>
+
+      <div class="forms square">
+        <p class="title">Widget 2 - Forms</p>
+        <div id="error" style="color:red; font-size:16px;"></div>
+        <form action="/" id="form" class="forms" method="GET">
+
+          <label for="name">
+            <input id="name" name="name" class="form first" type="text" placeholder="Taro Yamada">
+            <!-- 実はrequiredとしてもいい -->
+          </label> <br>
+
+          <label>
+            <input class="form second" type="email" placeholder="ex) abc@gmail.com">
+          </label><br>
+
+          <label for="password">
+            <input id="password" name="password" class="form third" type="password" placeholder="At least 6">
+          </label><br>
+
+          <textarea class="textarea" placeholder="write something"></textarea><br>
+
+
+          <button type="submit" class="contact_button">Send</button>
+        </form>
+      </div>
+
+
+
+
+      <div class="tab_menu square">
+        <p class="title">Widget 3 - Tab</p>
+
+        <div class="box">
+          <ul class="menu">
+            <li>
+              <a href="#" class="active" data-id="about">Concept</a>
+            </li>
+            <li>
+              <a href="#" data-id="service">Content </a>
+            </li>
+            <li>
+              <a href="#" data-id="contact">Contact</a>
+            </li>
+          </ul>
+
+          <!-- content に識別子をつけたいので id をふっておきます。 -->
+          <section class="content active" id="about">
+            <h4 style="margin:0 0 5px 10px;">What is Lorem Ipsum?</h4>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s.
+          </section>
+          <section class="content" id="service">
+            <h4 style="margin:0 0 5px 10px;">Where can I get some?</h4>
+            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+            in some form, by injected
+          </section>
+          <section class="content" id="contact">
+            <h4 style="margin:0 0 5px 10px;">Why do we use it?</h4>
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+          </section>
+        </div>
+        <!-- box -->
+      </div>
+      <!-- tab_menu -->
+
+ <!-- This is for tab menu -->
+ <script>
+  "use strict"
+  const menuItems = document.querySelectorAll('.menu li a');
+  const contents = document.querySelectorAll('.content')//本文のある中身。
+
+  menuItems.forEach(clickedItem => {
+    clickedItem.addEventListener('click', e => {
+      e.preventDefault();
+
+      menuItems.forEach(item => {
+        item.classList.remove('active');
+      });
+
+      clickedItem.classList.add('active')
+
+
+      contents.forEach(content => {
+        content.classList.remove('active');
+      });
+
+      document.getElementById(clickedItem.dataset.id).classList.add('active');
+    })
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+  </div>
+  <!-- entire -->
+
+
+
+  <!-- this is for time and date -->
+  <script type="text/javascript">
+    const now = new Date();
+
+    function LoadProc() {
+      var target = document.getElementById("DateTimeDisp");
+      var Year = now.getFullYear();
+      var Month = now.getMonth() + 1;
+      var Date = now.getDate();
+      var Hour = now.getHours();
+      var Min = now.getMinutes();
+      var Sec = now.getSeconds();
+      target.textContent = Year + "年" + Month + "月" + Date + "日" + Hour + ":" + Min + ":" + Sec;
+    }
+  </script>
+
+
+  <!-- draggable and snappable -->
+  <script>
+    $(function () {
+      $(".square").draggable({
+        snap: ".squaredotted",
+        snapMode: "inner"
+      });
+    });
+  </script>
+
+
+<!-- Form Validation -->
+<script>
+  // まずは取得する
+const name = document.getElementById('name')
+const password = document.getElementById('password')
+const form = document.getElementById('form')
+const errorElement = document.getElementById('error')// Idを取得して格納
+
+form.addEventListener('submit', (e) =>{
+  let messages =[]
+  if(name.value === '' || name.value == null){  //エラーメッセージを表示
+    messages.push('You need Name')
+  }
+
+  //６文字以下ならエラーメッセージ
+if(password.value.length <=5){
+  messages.push("password must be longer than 6 characters")
+}
+//10文字以上ならエラーメッセージ
+if(password.value.length >=15){
+  messages.push("password must be less than 15 characters")
+}
+//
+if(password.value ==="password"){
+  messages.push("password cannot be "/password/" than 10 characters")
+}
+
+
+  if (messages.length > 0){//メッセージが0以上なら（エラーメッセージが出ている） submitすることを防ぐ
+    e.preventDefault()
+    errorElement.innerText = messages.join(', ')
+  }
+})
+</script>
+
+</body>
+
+</html>

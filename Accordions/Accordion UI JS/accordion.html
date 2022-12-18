@@ -1,0 +1,151 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+.questionsBox {
+  max-width:1280px;
+    margin:auto;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  .questionsBox__block {
+    background-color: white;
+    border:1px solid rgb(226, 226, 226);
+    box-shadow: 1px 1.5px #c5c5c5;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  }
+  .questionsBox__block--Q{
+    background-color: white;
+    padding:40px 0;
+    cursor: pointer;
+   user-select:none;   /*ダブルクリック時にテキストが選ばれるのを防ぐ */
+   position:relative;
+   font-size: 20px;
+   font-weight: 600;
+   display:flex;
+   align-items: center;
+ 
+  }
+
+  /* // open時 */
+  .questionsBox__block--Q.open {
+    background-color: pink;
+    color:white;
+  }
+  /* //  Q icon close時 */
+.questionsBox__block--icon{
+  font-size: 40px;
+  color:#E19B9F;
+  margin-left:30px;
+}
+
+  /* // Q icon open時 */
+.questionsBox__block--icon.open {
+  font-size: 40px;
+  color:white;
+  margin-left:30px;
+}
+
+
+
+  .questionsBox__block--icon {
+    width:50px;
+  }
+  .questionsBox__block--Q::after{
+    content:'+';
+    position: absolute;
+    top:50px;
+    right:16px;
+    transition: transform .6s;
+    color:#E48C9C;
+  }
+  
+  .questionsBox__block--A {
+  padding: 8px;
+  padding-top: 54px;
+  display:none;
+  font-size: 18px;
+  line-height: 35px;
+  }
+
+  .questionsBox > div.appear dd{     
+
+      display: flex;
+  align-items: center;
+
+  
+    animation: .6s fadeIn;  /* keyfamesの実行 */
+  }
+  .questionsBox > div.appear dt::after{
+   transform: rotate(45deg);  
+  }
+  
+  @keyframes fadeIn {
+    0%{
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100%{
+      opacity: 1;
+      transform:none;
+    }
+  }
+  </style>
+</head>
+
+<body>
+    <!-- アコーディオン -->
+    <dl class="questionsBox">
+      <div class="questionsBox__block">
+          <dt class="questionsBox__block--Q">
+
+              <span class="questionsBox__block--icon">
+                  Q
+              </span> 
+              補助金申請すると必ず費用はかかるの？
+            
+          </dt>
+
+          <dd class="questionsBox__block--A">
+              <img src="img/Top-pc/inquiry_A.svg" alt="" class="questionsBox__block--img">
+              この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
+          </dd>
+      </div>
+    </dl>
+  </section>
+
+  </div>
+  <!-- questions__outer -->
+
+
+
+  <script>
+    //  アコーディオン
+const dts = document.querySelectorAll('dt')
+    
+    const aaa = document.getElementsByClassName("questionsBox__block--icon")
+    // 上で取得したdt全てに処理をするのでforEachを使う
+    dts.forEach(dt => {
+      dt.addEventListener("click", () =>{
+    dt.parentNode.classList.toggle('appear');//dtの親に対してクラスの付けはずしをしたい
+    
+    dt.classList.toggle('open');
+    
+    aaa[0].classList.toggle("open");
+      });
+    });
+    
+    dts.forEach(EL => {
+      if (dt !== EL){
+        EL .parentNode.classList.remove('appear');
+      }
+    })
+    
+  </script>
+</body>
+</html>

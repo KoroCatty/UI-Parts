@@ -1,0 +1,148 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+h1{
+  font-size:18px;
+  border-bottom:1px solid ;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+}
+dl {
+  margin:0;
+}
+dt{
+  padding:8px;
+  cursor: pointer;
+ user-select:none;   /*ダブルクリック時にテキストが選ばれるのを防ぐ */
+ position:relative;
+}
+dt::before{
+  content:'Q.';
+}
+dt::after{
+  content:'+';
+  position: absolute;
+  top:8px;
+  right:16px;
+
+  transition: transform .6s;
+}
+
+dd {
+  margin:0;
+padding: 8px;
+display:none;
+}
+dd::before {
+content: 'A.';
+}
+
+dl >div {/* dlの直下のdivに対してスタイルをかける */
+margin-bottom: 8px;
+}
+
+/* dlNo直下のdivにappearクラスが付いたら、divの中のddに対してこのスタイルをかけて表示する */
+dl > div.appear dd{     
+  display:block;
+
+  animation: .6s fadeIn;  /* keyfamesの実行 */
+}
+dl > div.appear dt::after{
+ transform: rotate(45deg);  /*div に appear クラスがついたときは dt の after 疑似要素を 45 度回転させて、 + マークが x マークに見えるようにしましょう */
+}
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100%{
+    opacity: 1;
+    transform:none;
+  }
+}
+
+
+
+  </style>
+</head>
+
+<body>
+  <!-- <details open>
+    <summary>I have a questioin</summary>
+    This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers!
+  </details>
+  <details>
+    <summary>I have a questioin</summary>
+    This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers!
+  </details>
+  <details>
+    <summary>I have a questioin</summary>
+    This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers! This is an answers!
+  </details> -->
+  <h1>FAQ</h1>
+
+  <dl>
+    <div class="a">
+      <dt>質問です</dt>
+      <dd>
+        解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。
+      </dd>
+    </div>
+    <div class="a">
+      <dt>質問です</dt>
+      <dd>
+        解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。
+      </dd>
+    </div>
+    <div class="a">
+      <dt>質問です</dt>
+      <dd>
+        解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。解答です。
+      </dd>
+    </div>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    'user strict';
+const dts = document.querySelectorAll('dt')
+
+// 上で取得したdt全てに処理をするのでforEachを使う
+dts.forEach(dt => {
+  dt.addEventListener("click", () =>{
+dt.parentNode.classList.toggle('appear');//dtの親に対してクラスの付けはずしをしたい
+  });
+});
+
+// さて、こちらのアコーディオンですが、今は複数の項目を同時に開くことができますが、ひとつを開いたら他は閉じたいという場合もあります。
+// その場合の実装を見ていきましょう。
+// どうするかというと、クリックした要素の親要素に appear クラスを付けたあとで、いったんすべての dt 要素を調べてあげて、クリックされた dt 要素以外を閉じてあげればいいでしょう
+
+dts.forEach(EL => {
+  if (dt !== EL){
+    EL .parentNode.classList.remove('appear');
+  }
+})
+
+  </script>
+</body>
+
+</html>

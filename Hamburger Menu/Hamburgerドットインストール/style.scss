@@ -1,0 +1,84 @@
+body{
+  margin:0;
+  font-family: Verdana, sans-serif;
+}
+
+header{
+  display: flex;
+  padding:0 16px;
+}
+header h1{
+  margin:0;
+  font-size: 22px;
+  line-height: 64px;
+}
+
+.sp-menu{
+  margin-left:auto;
+}
+.sp-menu #open.hide{ //三本線が見えなくていい時に見えてるのを消す
+  display: none;
+}
+
+.sp-menu #open{
+  font-size:32px;
+  line-height:64px;
+  cursor: pointer;
+}
+main{
+  padding: 0 16px;
+}
+
+//半透明の白で固定表示する
+.overlay{
+  position: fixed;
+  top: 0;
+  right:0;
+  left: 0;
+  background: rgba(255,255,255, 0.95);
+  text-align: center;
+  padding:64px;
+  opacity:0;
+pointer-events: none;  //pointer系イベントは無効化されて、下の要素が選択できるようになる
+transition: opacity .6s; //ふわっとさせる
+}
+
+// overlayのクラスにshowというクラスをｊｓで追加する
+.overlay.show{
+  opacity: 1;
+  pointer-events: auto;//無効化されているので、規定値であるautoにここで戻す
+}
+
+.overlay #close{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.overlay ul{
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+}
+// クリックされてないときの反応。
+.overlay li{
+margin-top:24px;
+opacity:0;//最初は消しておく
+transform: translateY(36px); //下から現れるようにしたいので、16px下に配置しておく。
+transition: opacity .3s, transform .3s;//opacity と transform に対してそれぞれ 0.3 秒くらいでアニメーションさせてね
+}
+
+.overlay.show li{ //クリックされた時の反応。
+opacity: 1;
+transform: none;
+}
+
+// delayでアニメーション開始を遅らせる
+.overlay.show li:nth-child(1){
+  transition-delay: .1s;
+}
+.overlay.show li:nth-child(2){
+  transition-delay: .2s;
+}

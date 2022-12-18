@@ -1,0 +1,200 @@
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-1-of-3{
+  width:360px;
+  &:nth-child(2){
+    margin:0 40px;
+  }
+}
+
+.card {
+
+  // FUNCTIONALITY
+  perspective: 150rem;// This has to be parent(Lower value is more dramatic)perspective は CSS のプロパティで、 z=0 の平面とユーザーとの間の距離を定めて三次元に配置された要素に遠近感を与えます
+  -moz-perspective: 150rem;// For Fire Fox
+  position: relative;
+  height: 52rem;//子供にpositionを設定したことでheightがなくなってしまったのでここで定義
+  
+  &__side {
+      height: 52rem;
+      transition: all .8s ease;
+
+      //TO make back side overlap with front side
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      
+      backface-visibility: hidden;// To hide the back side of the element プロパティの値をhiddenに指定していると、回転する要素の背面が見えるタイミングで、要素は非表示になります
+      
+      border-radius: 3px;
+      overflow: hidden;// 下で定義した画像がoverlapしてしまいborder-radiusが効かなくなるのでそれを防ぐ。imgs overflowing the parents
+
+      box-shadow: 0 1.5rem 4rem rgba(black, .15);
+
+      &--front {
+          background: white;
+      }
+
+      &--back {
+          transform: rotateY(180deg); //タテに周る
+
+          // 1枚目Back
+          &-1 {
+              background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+
+          }
+
+          &-2 {
+              background-image: linear-gradient(to right bottom, #7ed56f, #28b485);
+          }
+
+          &-3 {
+              background-image: linear-gradient(to right bottom, #2998ff, #5643fa);
+          }
+       
+      }
+  }
+
+  &:hover &__side--front {
+      transform: rotateY(-180deg);// マイナスにすることでページをめくってる動きにする
+  }
+
+  &:hover &__side--back {
+      transform: rotateY(0);// Back side needs going back 0
+  }
+
+
+  // FRONT SIDE STYLING
+  &__picture {
+      background-size: cover;
+      height: 23rem;
+
+      background-blend-mode: screen;//要素の背景画像が相互にどのように混合されるか、また要素の背景色とどのように混合されるかを設定します。他にもlighten, darken, differenceなどがある
+
+
+      //画像を斜めに切る。 時計回りに　xy xy xy xy 
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      
+      //画像の定義
+      &--1 {
+          background-image: linear-gradient(to right bottom, #ffb900, #ff7730), 
+          url(img/nat-5.jpg);
+      }
+
+      &--2 {
+          background-image: linear-gradient(to right bottom, #7ed56f, #28b485), 
+          url(img/nat-6.jpg);
+      }
+
+      &--3 {
+          background-image: linear-gradient(to right bottom, #2998ff, #5643fa), 
+          url(img/nat-7.jpg);
+      //     background-image: linear-gradient(to right bottom, black, yellow), 
+      //     url(../img/nat-7.jpg);
+      }
+  }
+
+  // The sear Explorerのところ
+  &__heading {
+      font-size: 2.8rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      text-align: right;
+      color: white;
+      position: absolute;
+      top: 12rem;
+      right: 2rem;
+      width: 75%;
+  
+  }
+
+  &__heading-span {
+      padding: 1rem 1.5rem;
+
+      //要素の断片が複数の行、段、ページに渡る場合に描画する方法を指定します。
+      // cloneははみ出た文字などを改行して、改行後の文字にもBOXを付与するもの。文字のタテラインをそろえている
+  // so the element is treated as 1 line of text
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+
+      &--1 {
+          background-image: linear-gradient(to right bottom, 
+          rgba(#7ed56f, .85), 
+          rgba(#28b485, .85));
+      }
+
+      &--2 {
+          background-image: linear-gradient(to right bottom, 
+          rgba(#ffb900, .85), 
+          rgba(#ff7730, .85));
+      }
+
+      &--3 {
+          background-image: linear-gradient(to right bottom,
+          rgba(#2998ff, .85), 
+          rgba(#5643fa, .85));
+      }
+  }
+
+
+  &__details {
+      padding: 3rem;
+
+      ul {
+          list-style: none;
+          width: 80%;
+          margin: 0 auto;
+
+          li {
+              text-align: center;
+              font-size: 1.5rem;
+              padding: 1rem;
+
+              &:not(:last-child) {
+                  border-bottom: 1px solid grey;
+              }
+          }
+      }
+  }
+
+
+  
+
+  // Back SIDE STYLING
+  &__cta {
+      // 要素を真ん中よせ
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+      width: 90%;
+      text-align: center;
+  }
+
+  &__price-box {
+      text-align: center;
+      color: white;
+      margin-bottom: 8rem;
+  }
+
+  &__price-only {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+  }
+
+  &__price-value {
+      font-size: 6rem;
+      font-weight: 100;
+  }
+}
+

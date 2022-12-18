@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Carousel with JavaScript</p>
+  <script>
+var i=0;//Start point
+var images =[]; //empty array
+var time = 1000;
+
+// Image List  They are array values with image path
+images[0] = "image1.png";
+images[1] = "image2.jfif";
+images[2] = "image3.png";
+
+// Change Image
+function changeImg(){
+  document.slide.src = images[i];   //　このslideはnameタグから取得している
+
+  if(i <images.length - 1){    // lengthは三つあるので3だが、配列で0,1,2なので、ー１をしてやる
+    i++;
+  }else {
+    i=0;
+  }
+  //setTimeout関数は、関数が実行されてから関数内で指定した時間の分だけ時間が経過した後に、特定の動作をさせたいという場合に使うことができる関数です。 ... setTimeoutは、指定した時間後に一度だけ動作するもので、指定した時間ごとに何度も動作させたい場合は、setIntervalという別の関数を使います
+  setTimeout("changeImg()" , time )
+}
+
+//onloadとは onloadとは、HTMLなどの文書を操作するときに利用するイベントハンドラー（※1）のことです。 onloadは、ページや画像などのリソース類を読み込んでから処理を実行したいときに利用します。
+window.onload = changeImg;
+
+  </script>
+  
+  <!-- このname=slideは上のファンクションで使うので要る -->
+<img name="slide"  width="400" height="200">
+
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+body{
+  background: rgb(240, 223, 223);
+}
+
+#btn{
+  width: 200px;
+  height:200px;
+  background-color:rgb(235, 50, 50);
+  border-radius:50%;/* まるを作る */
+  margin: 30px auto;/* 上下と横 */
+  text-align: center; /*？の文字をセンターにする */
+  line-height: 200px;/* ？の文字を上から下に移動させた */
+   color:black;/*文字色を白に */
+  font-weight:bold;
+  font-size:25px;
+  cursor:pointer;/* 赤まるのうえに乗った時カーソルが手に変わる */
+
+  box-shadow: 0 10px 0 rgb(241, 158, 158);/* x方向に０、Y方向に１０、no opacity、カラー */
+
+  user-select:none;/*これで文字にクリックした時に文字に選択されない様にする*/
+}
+#btn:hover{
+  opacity:0.9;
+}
+
+/* :active 擬似クラスを使うと要素がクリックされたときのスタイルを指定できるので、 #btn:active とセレクターを書いてあげて、ここで押し込まれたときのスタイルを書いてあげます。 */
+#btn:active{
+  box-shadow: 0 5px 0 rgb(241, 158, 158);margin-top:35px;/* 上でmargin-topが30になっているので、35にして、押し込まれた様に見せる技。 */
+}
+h1{
+  text-align:center;
+}
