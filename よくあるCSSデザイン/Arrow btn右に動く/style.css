@@ -1,0 +1,41 @@
+.arrowButton {
+  margin: 30px 0px 0 40px;
+  width: 260px;
+  display: block;
+  text-decoration: none;
+}
+.arrowButton--text {
+  border: #aa7335 1px solid;
+  color: #aa7335;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px 20px;
+  position: relative;
+}
+.arrowButton--text:before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  top: 15px;
+  left: 270px;
+  border-right: 1.5px #aa7335 solid;
+  transform: rotate(120deg);
+}
+.arrowButton--text:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 240px;
+  width: 40px;
+  height: 30px;
+  border-bottom: 1.5px #aa7335 solid;
+}
+.arrowButton--text:hover:before {
+  top: 15px;
+  left: 300px;
+  transition: 0.4s ease;
+}
+.arrowButton--text:hover:after {
+  width: 70px;
+  transition: 0.4s ease;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,99 @@
+@charset "UTF-8";
+/* Val---------------------------------------------- */
+/*カラーテーマ-------------------------------------------*/
+/* Mixin---------------------------------------------- */
+/* Common---------------------------------------------- */
+.explanation {
+  margin-top: 50px;
+}
+.explanation__container {
+  width: 1000px;
+  margin: auto;
+  background-color: #f7e2e6;
+  border-radius: 30px;
+  padding-bottom: 40px;
+}
+@media screen and (max-width: 785px) and (min-width:480px) {
+  .explanation__container {
+    width: 90vw;
+    padding-bottom: 20px;
+  }
+}
+
+.explanationTitle__first {
+  text-align: center;
+  font-size: 25px;
+  padding-top: 35px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+@media screen and (max-width: 785px) and (min-width:480px) {
+  .explanationTitle__first {
+    font-size: 5vw;
+  }
+}
+.explanationTitle__first--bg {
+  background-color: #C26878;
+  padding: 2px 10px;
+  border-radius: 10px;
+  color: white;
+}
+.explanationTitle__second {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 13px;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+@media screen and (max-width: 785px) and (min-width:480px) {
+  .explanationTitle__second {
+    font-size: 6vw;
+    line-height: 10vw;
+  }
+}
+.explanationTitle__second--bdline {
+  border-bottom: 4px dotted #DE9BA7;
+}
+.explanationTitle__second--br {
+  display: none;
+}
+@media screen and (max-width: 785px) and (min-width:480px) {
+  .explanationTitle__second--br {
+    display: block;
+  }
+}
+
+.explanationInner {
+  width: 85%;
+  margin: auto;
+  background-color: white;
+  border-radius: 30px;
+  padding-bottom: 45px;
+}
+.explanationInner__text {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  font-size: 17px;
+  line-height: 24px;
+  margin-bottom: 40px;
+  font-weight: 500;
+  padding-top: 40px;
+}
+.explanationInner__text--bold {
+  font-weight: 700;
+  background-color: rgb(247, 226, 230);
+}
+@media screen and (max-width: 785px) and (min-width:480px) {
+  .explanationInner__text--br {
+    display: none;
+  }
+}
+
+.explanationInnerImg {
+  text-align: center;
+  margin-top: -10px;
+}
+.explanationInnerImg__img {
+  width: 420px;
+}/*# sourceMappingURL=style.css.map */

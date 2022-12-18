@@ -1,0 +1,124 @@
+
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>4-1-7 同日2回目のアクセスでローディング画面非表示</title>
+<meta name="description"  content="書籍「動くWebデザインアイディア帳」のサンプルサイトです">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- ==============レイアウトを制御する独自のCSSを読み込み===============
+  <link href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css" rel="stylesheet">
+  <link href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/4-1-7/css/4-1-7.css" rel="stylesheet"> -->
+
+  <style>
+
+
+/*========= LoadingのためのCSS ===============*/
+
+/* Loading背景画面設定　*/
+#splash {
+    /*fixedで全面に固定*/
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background:#333;
+  text-align:center;
+  color:#fff;
+  display: none;
+}
+
+/* Loading画像中央配置　*/
+#splash_logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Loading アイコンの大きさ設定　*/
+#splash_logo img {
+  width:40px;
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+#container{
+    width:100%;
+    height: 100vh;
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+a{
+    color: #333;
+}
+
+a:hover{
+     text-decoration: none;   
+}
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <div id="splash">
+    <div id="splash_logo">
+      Loading...
+    </div>
+  </div>
+
+  <main>
+        <div id="container">
+    <p>ローディング後、この画面が見えます。<br>サーバーに上げないと、同日2回目以降表示時Loading画面非表示の動作は確認できません。<br>※使用しているライブラリ：<a href="https://github.com/carhartl/jquery-cookie" target="_blank">https://github.com/carhartl/jquery-cookie</a></p>
+        <!--/container--></div>
+  </main>
+<!--==============JQuery読み込み===============-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/4-1-7/js/4-1-7.js"></script>
+
+<script>
+
+//同じ日付で2回目以降ならローディング画面非表示の設定
+
+var splash_text = $.cookie('accessdate'); //キーが入っていれば年月日を取得
+var myD = new Date();//日付データを取得
+var myYear = String(myD.getFullYear());//年
+var myMonth = String(myD.getMonth() + 1);//月
+var myDate = String(myD.getDate());//日
+    
+if (splash_text != myYear + myMonth + myDate) {//cookieデータとアクセスした日付を比較↓
+        $("#splash").css("display", "block");//１回目はローディングを表示
+        setTimeout(function () {
+            $("#splash_logo").fadeIn(1000, function () {//1000ミリ秒（1秒）かけてロゴがフェードイン
+                setTimeout(function () {
+            $("#splash_logo").fadeOut(1000);//1000ミリ秒（1秒）かけてロゴがフェードアウト
+                }, 1000);//1000ミリ秒（1秒）後に処理を実行
+        setTimeout(function () {
+            $("#splash").fadeOut(1000, function () {//1000ミリ秒（1秒）かけて画面がフェードアウト
+            var myD = new Date();
+            var myYear = String(myD.getFullYear());
+            var myMonth = String(myD.getMonth() + 1);
+            var myDate = String(myD.getDate());
+            $.cookie('accessdate', myYear + myMonth + myDate); //accessdateキーで年月日を記録
+        });
+        }, 1700);//1700ミリ秒（1.7秒）後に処理を実行
+    });
+}, 1000);//1000ミリ秒（1秒）後に処理を実行
+}else {
+    $("#splash").css("display", "none");//同日2回目のアクセスでローディング画面非表示
+}  
+
+
+</script>
+</body>
+</html>
+

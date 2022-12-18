@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="style.css">
+
+<!-- forms --------------->
+ <section class="forms">
+    <form action="">
+      <div class="formsContents">
+        <div class="formsContents__textTop">
+          <p class="formsContents__textTop--first"> 実は、当社の採用動画 / 自動面接の仕組みなどはどの企業様でも活用できるものではありません。 </p>
+          <p class="formsContents__textTop--second">マッチしない企業様が作成しても、効果を発揮できません。</p>
+        </div>
+        <div class="formsContents__textBottom">
+          <p class="formsContents__textBottom--first">20分のWEB面接で御社にこの仕組みがマッチしそうか判断ができます。</p>
+          <p class="formsContents__textBottom--second">ぜひお気軽にお問い合わせください。 </p>
+        </div>
+        <div class="formsArea">
+          <div class="formsArea__input">
+            <div class="formsArea__inputTitle">
+              <img src="<%= require('../images/form-icon.svg') %>" alt="" class="formsArea__input--img">
+              <p class="formsArea__input--label">会社名</p>
+            </div> <input type="text" class="formsArea__input--form">
+          </div>
+          <div class="formsArea__input">
+            <div class="formsArea__inputTitle">
+              <img src="<%= require('../images/form-icon.svg') %>" alt="" class="formsArea__input--img">
+
+              <p class="formsArea__input--label">ご担当者名</p>
+            </div> <input type="text" class="formsArea__input--form">
+          </div>
+          <div class="formsArea__input">
+            <div class="formsArea__inputTitle">
+              <img src="<%= require('../images/form-icon.svg') %>" alt="" class="formsArea__input--img">
+
+              <p class="formsArea__input--label">ご連絡先メールアドレス</p>
+            </div> <input type="text" class="formsArea__input--form">
+          </div>
+          <div class="formsArea__input">
+            <div class="formsArea__inputTitle">
+              <img src="<%= require('../images/form-icon.svg') %>" alt="" class="formsArea__input--img">
+
+              <p class="formsArea__input--label">ご連絡先電話番号</p>
+            </div> <input type="text" class="formsArea__input--form">
+          </div>
+          <div class="formsArea__input">
+            <div class="formsArea__inputTitle">
+              <img src="<%= require('../images/form-icon-optional.svg') %>" alt="" class="formsArea__input--img">
+
+              <p class="formsArea__input--label">会社ホームページ URL</p>
+            </div> <input type="text" class="formsArea__input--form">
+          </div>
+          <div class="formsArea__input">
+            <div class="formsArea__inputTitle">
+              <img src="<%= require('../images/form-icon-optional.svg') %>" alt="" class="formsArea__input--img">
+
+              <p class="formsArea__input--label">お問い合わせ内容</p>
+            </div> <textarea type="text" class="formsArea__input--form formsArea__input--formTextarea"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="btnArea"> <button class="formsArea__button">
+          送信する
+        </button> </div>
+      <!-- .formsContents -->
+    </form>
+  </section>

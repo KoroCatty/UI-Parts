@@ -1,0 +1,639 @@
+@charset "UTF-8";
+/* Val---------------------------------------------- */
+/*カラーテーマ-------------------------------------------*/
+/* Mixin---------------------------------------------- */
+/* Common---------------------------------------------- */
+body {
+  font-family: 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", HGS明朝E, メイリオ, Meiryo, serif;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: #000;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  opacity: 0.8;
+  transition: all 0.6s ease;
+}
+
+img {
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+
+input[type=submit],
+input[type=button] {
+  -webkit-appearance: button;
+     -moz-appearance: button;
+          appearance: button;
+  border: none;
+  box-sizing: border-box;
+}
+input[type=submit]::-webkit-search-decoration,
+input[type=button]::-webkit-search-decoration {
+  display: none;
+}
+input[type=submit]::focus,
+input[type=button]::focus {
+  outline-offset: -2px;
+}
+
+input[type=text], input[type=email], select, textarea {
+  padding: 0.25em 0.5em;
+  font-size: 15px;
+  width: 100%;
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  input[type=text], input[type=email], select, textarea {
+    font-size: 16px;
+  }
+}
+
+select {
+  font-family: system-ui;
+}
+
+@media screen and (max-width: 900px) and (min-width:480px) {
+  textarea {
+    min-height: 30vw;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .is-pc {
+    display: none;
+  }
+}
+.is-sp {
+  display: none;
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .is-sp {
+    display: block;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.inner-narrow, .inner-wide, .inner {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1080px) and (min-width: 901px) {
+  .inner-narrow, .inner-wide, .inner {
+    width: 98%;
+  }
+}
+
+.inner {
+  max-width: 1000px;
+}
+.inner-wide {
+  max-width: 1150px;
+}
+.inner-narrow {
+  max-width: 820px;
+}
+
+.hamburger {
+  z-index: 10;
+}
+@media screen and (max-width: 480px) {
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 30px;
+    height: 32px;
+  }
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 32px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hamburgerHeader {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: #ffffff;
+}
+
+.nav {
+  background: rgb(0, 0, 0);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 460px;
+  height: 100vh;
+  transition: transform 0.7s, opacity 1s;
+  transform: translateX(100%);
+  opacity: 0;
+  color: white;
+  border-left: 2px solid white;
+}
+@media screen and (max-width: 480px) {
+  .nav {
+    width: 260px;
+  }
+}
+
+.nav.show {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.white.active {
+  opacity: 0.5;
+  filter: blur(4px);
+  height: 100vh;
+}
+
+.hamburger span {
+  position: absolute;
+  left: 0;
+  background: white;
+  width: inherit;
+  height: 2px;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.top-line {
+  top: 1.5px;
+}
+
+.center-line {
+  top: 13px;
+}
+
+.bottom-line {
+  bottom: 6px;
+}
+
+.top-line.active {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.center-line.active {
+  opacity: 0;
+}
+
+.bottom-line.active {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+.s_01 {
+  overflow-y: scroll;
+}
+
+.accordion_one {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.accordion_one :before,
+.accordion_one :after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: "";
+  background-image: linear-gradient(135deg, #704308 0%, #ffce08 40%, #e1ce08 60%, #704308 100%);
+}
+.accordion_one :before {
+  top: 0;
+}
+.accordion_one :after {
+  bottom: 0;
+}
+
+.s_01 .accordion_one .accordion_header {
+  background-color: black;
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+/* 各代表項目のリンク */
+.accordion__header--link {
+  padding: 16px 28px;
+  border-radius: 3px;
+  color: white;
+}
+@media screen and (max-width: 480px) {
+  .accordion__header--link {
+    padding: 16px 0px;
+  }
+}
+.accordion__header--link:hover {
+  letter-spacing: 0.15em;
+}
+
+/* 各代表項目のリンクがクリックされた際 右のアイコンを削除 */
+.s_01 .accordion_one .accordion_header .i_box.NoMove {
+  display: none;
+}
+
+.s_01 .accordion_one .accordion_header:hover {
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+/* icon  */
+.s_01 .accordion_one .accordion_header .i_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  box-sizing: border-box;
+  transform: rotate(45deg);
+  transform-origin: center center;
+  transition-duration: 0.2s;
+}
+
+/* icon 中身 */
+.s_01 .accordion_one .accordion_header .i_box .one_i {
+  display: block;
+  width: 18px;
+  height: 18px;
+  transform: rotate(45deg);
+  transform-origin: center center;
+  transition-duration: 0.2s;
+  position: relative;
+}
+
+.s_01 .accordion_one .accordion_header.open .i_box {
+  transform: rotate(-360deg);
+}
+
+.s_01 .accordion_one .accordion_header .i_box .one_i:before,
+.s_01 .accordion_one .accordion_header .i_box .one_i:after {
+  display: flex;
+  content: "";
+  background-color: #fff;
+  border-radius: 10px;
+  width: 18px;
+  height: 4px;
+  position: absolute;
+  top: 7px;
+  left: 0;
+  transform: rotate(0deg);
+  transform-origin: center center;
+}
+
+.s_01 .accordion_one .accordion_header .i_box .one_i:before {
+  width: 4px;
+  height: 18px;
+  top: 0;
+  left: 7px;
+}
+
+.s_01 .accordion_one .accordion_header.open .i_box .one_i:before {
+  content: none;
+}
+
+.s_01 .accordion_one .accordion_header.open .i_box .one_i:after {
+  transform: rotate(-45deg);
+}
+
+/* Accordion 中身 */
+.s_01 .accordion_one .accordion_inner {
+  display: none;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  background-color: black;
+}
+
+/* クリック時なにも表示しない */
+.accordion_inner.NoShow {
+  display: none;
+  height: 0;
+  width: 0;
+  padding: 0;
+}
+
+/* 中身　 */
+.s_01 .accordion_one .accordion_inner .box_one {
+  /* height: 300px; */
+}
+
+.accordion_inner--text {
+  font-family: "YakuHanJPs", "Lato", "Custom Yu Gothic", "游ゴシック", "Yu Gothic", YuGothic, Hiragino Sans, "Meiryo", Hiragino Kaku Gothic ProN, sans-serif;
+  font-size: 20px;
+  display: block;
+  margin-top: 28px;
+  margin-bottom: 28px;
+  letter-spacing: 2px;
+  color: white;
+  padding-left: 28px;
+}
+.accordion_inner--text:hover {
+  letter-spacing: 0.2em;
+}
+@media screen and (max-width: 480px) {
+  .accordion_inner--text {
+    font-size: 16px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+.s_01 .accordion_one .accordion_inner p.txt_a_ac {
+  margin: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .s_01 .accordion_one .accordion_header .i_box {
+    width: 20px;
+    height: 20px;
+    margin-top: -15px;
+  }
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .s_01 .accordion_one .accordion_header .i_box {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .s_01 .accordion_one .accordion_header {
+    font-size: 20px;
+    text-align: left;
+    padding: 20px 60px 20px 15px;
+  }
+}
+@media screen and (max-width: 900px) and (max-width: 480px) {
+  .s_01 .accordion_one .accordion_header {
+    font-size: 16px;
+    text-align: left;
+    padding: 30px 60px 30px 15px;
+  }
+}
+body {
+  background-color: black;
+}
+
+.header {
+  font-family: "YakuHanJPs", "Lato", "Custom Yu Gothic", "游ゴシック", "Yu Gothic", YuGothic, Hiragino Sans, "Meiryo", Hiragino Kaku Gothic ProN, sans-serif;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: rgba(30, 30, 30, 0.7);
+  box-shadow: 0 1px 4px rgb(201, 201, 201);
+}
+.header .headerGroup {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.header__logo {
+  margin: 14px 0;
+  width: 280px;
+  flex: 1;
+  margin-left: 40px;
+}
+@media screen and (max-width: 480px) {
+  .header__logo {
+    margin-left: 10px;
+  }
+}
+.header__logoText {
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  font-family: 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", HGS明朝E, メイリオ, Meiryo, serif;
+}
+@media screen and (max-width: 480px) {
+  .header__logoText {
+    font-size: 32px;
+    max-width: 479px;
+    transform: translate(0, 4px);
+  }
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .header__logoText {
+    font-size: 40px;
+    max-width: 767px;
+  }
+}
+.header__message {
+  color: white;
+  font-size: 22px;
+  margin-right: 40px;
+  font-weight: 700;
+  font-family: 游明朝, "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", HGS明朝E, メイリオ, Meiryo, serif;
+  margin-top: 16px;
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .header__message {
+    display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header__message {
+    display: none;
+  }
+}
+.header .header__telGroup {
+  margin-right: 40px;
+}
+@media screen and (max-width: 480px) {
+  .header .header__telGroup {
+    margin-right: 80px;
+    transform: translate(0, 3px);
+  }
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .header .header__telGroup {
+    margin-right: 120px;
+  }
+}
+.header .header__telGroup--reception {
+  color: white;
+}
+@media screen and (max-width: 480px) {
+  .header .header__telGroup--reception {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .header .header__telGroup--reception {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header .header__telGroup--reception .receptionNoSp {
+    display: none;
+  }
+}
+.header .header__telGroup--tel {
+  font-size: 28px;
+  font-weight: 800;
+  background-image: linear-gradient(70deg, white 45%, #323232 50%, white 55%);
+  background-size: 500% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-animation: shine 3s infinite;
+          animation: shine 3s infinite;
+}
+@media screen and (max-width: 480px) {
+  .header .header__telGroup--tel {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .header .header__telGroup--tel {
+    font-size: 22px;
+  }
+}
+@-webkit-keyframes shine {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes shine {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.header .fa-solid.fa-phone {
+  color: white;
+}
+
+.headerMenu {
+  max-width: 1080px;
+  margin: 0px auto 4px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateX(-32px);
+}
+@media screen and (max-width: 900px) and (min-width:480px) {
+  .headerMenu {
+    display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .headerMenu {
+    display: none;
+  }
+}
+.headerMenu__item {
+  position: relative;
+  padding-bottom: 12px;
+  background: linear-gradient(rgb(205, 198, 72) 0 0) bottom/var(--d, 0) 3px no-repeat;
+  transition: 0.3s;
+}
+.headerMenu__item:hover {
+  --d: 120%;
+}
+.headerMenu__item:hover .headerMenu__hidden {
+  display: block;
+}
+.headerMenu__item--jp {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+.headerMenu__item--jp:hover {
+  opacity: 0.6;
+  transition: all 0.2s ease-in-out;
+}
+.headerMenu__box {
+  color: white;
+  padding: 10px 20px;
+  background-color: rgb(190, 54, 54);
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  transform: translateY(-5px);
+}
+
+.headerMenu__hidden {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 160px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+}
+.headerMenu__hidden--item {
+  padding: 20px 10px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.headerMenu__hidden--item:hover {
+  background-color: rgb(33, 33, 33);
+}
+.headerMenu__hidden--item:hover .headerMenu__hidden--link {
+  color: white;
+}
+.headerMenu__hidden--link {
+  color: Black;
+  font-weight: 700;
+  font-size: 18px;
+}/*# sourceMappingURL=style.css.map */

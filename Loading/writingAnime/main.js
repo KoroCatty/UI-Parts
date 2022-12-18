@@ -1,5 +1,4 @@
-HTML CSS JSResult Skip Results Iframe
-EDIT ON
+
 //SVGアニメーションの描画
 var stroke;
 stroke = new Vivus('mask', {//アニメーションをするIDの指定
@@ -19,4 +18,3 @@ $(window).on('load',function(){
 
 
 
-Resources1× 0.5× 0.25×Rerun

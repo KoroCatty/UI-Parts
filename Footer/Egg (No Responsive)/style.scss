@@ -1,0 +1,413 @@
+//Breakpoints 
+// 各375px,768px,1280px以下で発動
+@mixin breakpoint($point) {
+    @if $point == mobile {
+      @media screen and (max-width: 376px) {
+        @content;}
+      }
+     @else if $point == tablet {
+      @media screen and (min-width: 377px) and (max-width:768px) {
+        @content;}
+      }
+      @if $point == laptop {
+        @media screen and (min-width: 769px) {
+          @content;}
+        }
+    }
+  
+  
+    @include breakpoint(mobile) {
+  
+    }
+    @include breakpoint(tablet) {
+  
+    }
+    
+    @include breakpoint(laptop) {
+    }
+  
+  
+  // ------------------------------------
+  
+  //footer------------------------------------------------------------
+  
+  // ------  fixed button -----------------------
+  .link-pagetop{
+    display:block;
+    position: fixed;
+    right: 40px;
+    bottom: -90px;
+    display: none;
+    color:orange ;
+    font-size: 45px;
+    transition: all 0.8s ease;
+    transform:translateY(-100px);
+  }
+  
+  
+  footer {
+    background-color: rgb(101, 72, 58);
+    color: white;
+  }
+  .footer__container {
+    max-width: 1040px;
+    margin: auto;
+    padding-bottom: 240px;
+    @include breakpoint(mobile) {
+      padding-bottom: 6vw;
+    }
+    @include breakpoint(tablet) {
+      padding-bottom: 70px;
+    }
+  }
+  .footer__slider {
+    padding-top: 60px;
+    box-sizing: content-box;
+    margin-left: 20px;
+    @include breakpoint(mobile) {
+      padding-top: 10px;
+      margin-left: 0;
+    }
+    @include breakpoint(tablet);
+  }
+  
+  .footer__slider__wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 0;
+    padding-left: 0;
+    //set the slider under tablet size
+    @include breakpoint(mobile) {
+    }
+    @include breakpoint(tablet) {
+    }
+  }
+  // sliderの矢印
+  .footer__slider__wrapper .slick-arrow_left {
+    margin-right: 3vw;
+    img {
+      width: 3.5vw;
+      position: relative;
+      top: 60px;
+      left: 0;
+      @include breakpoint(mobile) {
+        position: relative;
+        top: 50px;
+        left: 5px;
+      }
+      @include breakpoint(tablet) {
+      }
+    }
+  }
+  .footer__slider__wrapper .slick-arrow_right {
+    margin-left: 1vw;
+    img {
+      width: 3.5vw;
+      position: relative;
+      top: 60px;
+      left: -15px;
+      margin-right: 1vw;
+  
+      @include breakpoint(mobile) {
+        position: relative;
+        top: 50px;
+        left: -5px;
+      }
+      @include breakpoint(tablet) {
+      }
+    }
+  }
+  
+  .footer__slider__wrapper__individual {
+    list-style: none;
+    margin-left: 40px;
+    transition: 0.4s ease;
+  }
+  .footer__slider__wrapper__individual:hover {
+    opacity: 0.4;
+    filter: brightness(120%);
+    color: #333;
+    @include breakpoint(mobile) {
+      opacity: 1;
+      filter: brightness(100%);
+    }
+    @include breakpoint(tablet) {
+      opacity: 1;
+      filter: brightness(100%);
+    }
+  }
+  
+  .footer__slider__wrapper__individual:first-child {
+    margin-left: 0;
+  }
+  .footer__slider__wrapper__individual--link {
+    img {
+      max-width: 190px;
+      @include breakpoint(mobile) {
+        max-width: 38vw;
+      }
+      @include breakpoint(tablet) {
+      }
+    }
+  }
+  
+  .footer__group {
+    display: flex;
+    justify-content: space-between;
+    @include breakpoint(mobile) {
+      display: none;
+    }
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
+  .footer__group__title {
+    font-weight: 800;
+    width: 200px;
+    transition: all 0.4s;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+  .footer__group__title a:hover {
+    opacity: 0.6;
+  }
+  
+  .footer__group--dd {
+    position: relative;
+  }
+  .footer__group__list {
+    list-style: none;
+    padding-left: 0;
+    position: absolute;
+    top: 0;
+    left: -40px;
+  }
+  
+  .footer__group__list__text--link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+  .footer__group__list__text--link:hover {
+    opacity: 0.6;
+  }
+  
+  //各リストの位置を調整
+  .footer__group__block:last-child {
+    margin-right: 20px;
+    width: 120px;
+  }
+  
+  // last row------------------------------------------
+  .last__row {
+    border-top: 1px solid #745d52;
+    @include breakpoint(mobile) {
+      padding-top: 10vw;
+      padding-bottom: 10vw;
+    }
+    @include breakpoint(tablet) {
+      padding-top: 70px;
+      padding-bottom: 100px;
+    }
+  }
+  .last__row__container {
+    max-width: 1040px;
+    margin: auto;
+    display: flex;
+    @include breakpoint(mobile) {
+      display: block;
+      text-align: center;
+      align-items: center;
+      padding-left: 1vw;
+    }
+    @include breakpoint(tablet) {
+      display: block;
+      text-align: center;
+      align-items: center;
+      padding-left: 15vw;
+    }
+  }
+  
+  .last__row__img {
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: all 0.4s ease;
+    @include breakpoint(mobile) {
+      display: none;
+    }
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
+  
+  .last__row__img:hover {
+    opacity: 0.6;
+  }
+  .last__row__img--link {
+    img {
+      width: 230px;
+      display: block;
+    }
+  }
+  
+  // .last__row__empty {
+  //   flex: 1;
+  // }
+  .last__row__texts {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    @include breakpoint(mobile) {
+      margin-right: 2vw;
+      width: 300px;
+      padding-left: 0;
+    }
+    @include breakpoint(tablet) {
+      margin-right: 5vw;
+    }
+  }
+  .last__row__texts--individual {
+    list-style: none;
+    margin-left: 20px;
+    @include breakpoint(mobile) {
+      margin-right: 2vw;
+      font-weight: 900;
+    }
+    @include breakpoint(tablet) {
+      margin-right: 3vw;
+    }
+  }
+  .last__row__texts--link {
+    text-decoration: none;
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.2s;
+    font-size: 14px;
+    white-space: nowrap;
+    @include breakpoint(mobile) {
+      font-size: 3vw;
+    }
+    @include breakpoint(tablet) {
+    }
+  }
+  .last__row__texts--link:hover {
+    opacity: 0.6;
+  }
+  
+  .last__row__sns {
+    display: flex;
+    @include breakpoint(mobile) {
+      margin-left: 15vw;
+      margin-top: 50px;
+    }
+    @include breakpoint(tablet) {
+      margin-left: 15vw;
+      margin-top: 50px;
+    }
+  }
+  .last__row__sns--individual {
+    list-style: none;
+    margin-left: 20px;
+    transition: 0.4s;
+  }
+  .last__row__sns--individual:hover {
+    opacity: 0.3;
+  }
+  
+  .last__row__sns--link {
+    img {
+      display: block;
+      width: 36px;
+    }
+  }
+  
+  // pop up under laptop size
+  .last__row--img {
+    display: none;
+    @include breakpoint(mobile) {
+      display: block;
+      margin-top: 8vw;
+      text-align: center;
+    }
+    @include breakpoint(tablet) {
+      display: block;
+      margin-top: 8vw;
+      text-align: center;
+    }
+  }
+  
+  .last__row--IMG {
+    width: 35vw;
+    @include breakpoint(mobile) {
+      width: 60vw;
+    }
+  }
+  
+  // copyright--------------------------------------------
+  .copyright {
+    background-color: rgb(65, 41, 29);
+    width: 100%;
+    margin: auto;
+    @include breakpoint(mobile) {
+      padding-bottom: 3vw;
+    }
+    @include breakpoint(tablet) {
+    }
+  }
+  
+  .copyright__container {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    font-size: 8px;
+    line-height: 1.3;
+    @include breakpoint(mobile) {
+      display: block;
+      padding-top: 4vw;
+      padding-bottom: 3vw;
+      font-size: 1.4vw;
+      margin-left: 3vw;
+    }
+    @include breakpoint(tablet) {
+      display: block;
+      padding-top: 4vw;
+      padding-bottom: 3vw;
+      font-size: 1.4vw;
+      margin-left: 3vw;
+    }
+  }
+  
+  .copyright__container--text1 {
+    margin-right: 160px;
+    @include breakpoint(mobile) {
+      font-size: 2.8vw;
+      margin-right: 0;
+      margin-top: 0;
+    }
+    @include breakpoint(tablet) {
+    }
+  }
+  
+  .copyright__container--text2 {
+    @include breakpoint(mobile) {
+      word-break: break-all;
+      overflow-wrap: wrap;
+      @include breakpoint(mobile) {
+        font-size: 2.8vw;
+        padding-right: 5vw;
+      }
+      @include breakpoint(tablet) {
+      }
+    }
+    @include breakpoint(tablet) {
+      word-break: break-all;
+      overflow-wrap: wrap;
+    }
+  }
+  
+  

@@ -1,0 +1,229 @@
+
+
+
+
+
+
+
+$breakpoints: (
+    's': 'screen and (max-width:480px)',
+    'm': 'screen and (max-width: 767px) and (min-width:480px)',
+    // 'l': 'screen and (max-width: 1080px) and (min-width: 768px)',
+    'l': 'screen and (max-width: 1079px) and (min-width: 768px)',
+    'xl': 'screen and (min-width: 1080px) ',
+  ) !default;
+  
+  @mixin mq($breakpoint: md) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+  }
+  
+
+body {
+    background-color: grey;
+}
+
+  /* ------------------------
+  // header　& Hamburger
+  ------------------------ */
+  .header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4vw;
+    position: fixed;
+    z-index: 1;
+  
+    margin-top: 2.1%;
+  
+    .logo {
+      font-family: Montserrat;
+      // color: white;
+      font-size: 2.2rem;
+  
+      @include mq(s) {
+        font-size: 1.6rem;
+      }
+      @include mq(m) {
+        font-size: 2rem;
+      }
+  
+      span {
+        font-size: 1.5rem;
+        margin-left: 8px;
+      }
+    }
+  
+    &Ham {
+      cursor: pointer;
+      color: white;
+      display: flex;
+      align-items: center;
+  
+      &__text {
+        font-family: Montserrat;
+        text-transform: uppercase;
+        padding-top: 6px;
+      }
+  
+      &__icon {
+        cursor: pointer;
+        background-color: none;
+        background: none;
+        border: none;
+        appearance: none;
+        outline: none;
+        padding: 0;
+        cursor: pointer;
+        width: 24px;
+        height: 13px;
+        position: relative;
+        margin-right: 6px;
+  
+        &--bar {
+          background: white;
+          width: inherit;
+          height: 3px;
+          transition: transform 0.5s, opacity 0.5s;
+          display: block;
+  
+          &.top {
+            position: absolute;
+            top: 0;
+            left: 0;
+  
+            //   js
+            &.active {
+              transform: translateY(8px) rotate(45deg);
+            }
+          }
+  
+          &.middle {
+            position: absolute;
+            top: 7px;
+            left: 0;
+  
+            //   js
+            &.active {
+              display: none;
+            }
+          }
+  
+          //   js
+          &.bottom {
+            position: absolute;
+            top: 13px;
+            left: 0;
+  
+            &.active {
+              transform: translateY(-5px) rotate(132deg);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // js
+  .mask {
+    opacity: 0.4;
+    background-color: rgba(0, 0, 0, 0.8);
+    // pointer-events: none; //pointer系イベントは無効化
+  }
+  
+  .overWrap {
+    position: fixed;
+    top: 0;
+    right: -20%;
+    height: 100vh;
+    // display: none;
+    opacity: 0;
+    transition: all 0.5s ease;
+  
+    &__box {
+      color: white;
+      margin-top: 200px;
+  
+      @include mq(s) {
+        margin-top: 120px;
+      }
+  
+      @include mq(m) {
+        margin-left: 20px;
+      }
+  
+      &--img {
+        @include mq(s) {
+          width: 140px;
+        }
+        @include mq(m) {
+          width: 200px;
+          margin-left: -5px;
+        }
+      }
+  
+      &--item {
+        margin: 36px 0;
+      }
+  
+      &--link {
+        color: white;
+        text-decoration: none;
+        font-family: Montserrat;
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+      }
+    }
+  }
+  
+  // js
+  .hiddenMenu {
+    position: fixed;
+    top: 0;
+    right: 30%;
+    display: block;
+    opacity: 1;
+    z-index: 1;
+    height: 180vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 48vw;
+    text-align: center;
+    transition: all 0.5s ease;
+    transform: translate(66%, 0px);
+    // height: calc( 100% - 100px);
+    //   pointer-events: none; //pointer系イベントは無効化
+  
+    @include mq(s) {
+      // padding: 60px 8px 0 8px;
+      height: 140vh;
+    }
+    @include mq(m) {
+      // padding: 32px;
+      height: 180vh;
+      right: 40%;
+      width: 70vw;
+    }
+  }
+  
+  // js ------------------------
+  .black {
+    background-color: black;
+  }
+  
+  .changeColor {
+    color: black;
+  }
+  
+  .headerHam__icon--bar.changeColor {
+    background: black;
+  }
+  
+  // under 760, change color by clicking
+  .ClickChangeColor {
+    color: white !important;
+  }
+  .ClickChangeColor2 {
+    background: white !important;
+  }
+  

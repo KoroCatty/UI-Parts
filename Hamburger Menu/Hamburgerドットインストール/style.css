@@ -4,8 +4,6 @@ body {
 }
 
 header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   padding: 0 16px;
 }
@@ -44,8 +42,7 @@ main {
   padding: 64px;
   opacity: 0;
   pointer-events: none;
-  -webkit-transition: opacity .6s;
-  transition: opacity .6s;
+  transition: opacity 0.6s;
 }
 
 .overlay.show {
@@ -70,27 +67,19 @@ main {
 .overlay li {
   margin-top: 24px;
   opacity: 0;
-  -webkit-transform: translateY(36px);
-          transform: translateY(36px);
-  -webkit-transition: opacity .3s, -webkit-transform .3s;
-  transition: opacity .3s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s;
-  transition: opacity .3s, transform .3s, -webkit-transform .3s;
+  transform: translateY(36px);
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 .overlay.show li {
   opacity: 1;
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
 
 .overlay.show li:nth-child(1) {
-  -webkit-transition-delay: .1s;
-          transition-delay: .1s;
+  transition-delay: 0.1s;
 }
 
 .overlay.show li:nth-child(2) {
-  -webkit-transition-delay: .2s;
-          transition-delay: .2s;
-}
-/*# sourceMappingURL=style.css.map */
+  transition-delay: 0.2s;
+}/*# sourceMappingURL=style.css.map */

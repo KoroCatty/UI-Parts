@@ -1,0 +1,189 @@
+@charset "UTF-8";
+body {
+  background-color: grey;
+}
+
+/* ------------------------
+// header　& Hamburger
+------------------------ */
+.header {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4vw;
+  position: fixed;
+  z-index: 1;
+  margin-top: 2.1%;
+}
+.header .logo {
+  font-family: Montserrat;
+  font-size: 2.2rem;
+}
+@media screen and (max-width:480px) {
+  .header .logo {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 767px) and (min-width:480px) {
+  .header .logo {
+    font-size: 2rem;
+  }
+}
+.header .logo span {
+  font-size: 1.5rem;
+  margin-left: 8px;
+}
+.headerHam {
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.headerHam__text {
+  font-family: Montserrat;
+  text-transform: uppercase;
+  padding-top: 6px;
+}
+.headerHam__icon {
+  cursor: pointer;
+  background-color: none;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 13px;
+  position: relative;
+  margin-right: 6px;
+}
+.headerHam__icon--bar {
+  background: white;
+  width: inherit;
+  height: 3px;
+  transition: transform 0.5s, opacity 0.5s;
+  display: block;
+}
+.headerHam__icon--bar.top {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.headerHam__icon--bar.top.active {
+  transform: translateY(8px) rotate(45deg);
+}
+.headerHam__icon--bar.middle {
+  position: absolute;
+  top: 7px;
+  left: 0;
+}
+.headerHam__icon--bar.middle.active {
+  display: none;
+}
+.headerHam__icon--bar.bottom {
+  position: absolute;
+  top: 13px;
+  left: 0;
+}
+.headerHam__icon--bar.bottom.active {
+  transform: translateY(-5px) rotate(132deg);
+}
+
+.mask {
+  opacity: 0.4;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.overWrap {
+  position: fixed;
+  top: 0;
+  right: -20%;
+  height: 100vh;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.overWrap__box {
+  color: white;
+  margin-top: 200px;
+}
+@media screen and (max-width:480px) {
+  .overWrap__box {
+    margin-top: 120px;
+  }
+}
+@media screen and (max-width: 767px) and (min-width:480px) {
+  .overWrap__box {
+    margin-left: 20px;
+  }
+}
+@media screen and (max-width:480px) {
+  .overWrap__box--img {
+    width: 140px;
+  }
+}
+@media screen and (max-width: 767px) and (min-width:480px) {
+  .overWrap__box--img {
+    width: 200px;
+    margin-left: -5px;
+  }
+}
+.overWrap__box--item {
+  margin: 36px 0;
+}
+.overWrap__box--link {
+  color: white;
+  text-decoration: none;
+  font-family: Montserrat;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+}
+
+.hiddenMenu {
+  position: fixed;
+  top: 0;
+  right: 30%;
+  display: block;
+  opacity: 1;
+  z-index: 1;
+  height: 180vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 48vw;
+  text-align: center;
+  transition: all 0.5s ease;
+  transform: translate(66%, 0px);
+}
+@media screen and (max-width:480px) {
+  .hiddenMenu {
+    height: 140vh;
+  }
+}
+@media screen and (max-width: 767px) and (min-width:480px) {
+  .hiddenMenu {
+    height: 180vh;
+    right: 40%;
+    width: 70vw;
+  }
+}
+
+.black {
+  background-color: black;
+}
+
+.changeColor {
+  color: black;
+}
+
+.headerHam__icon--bar.changeColor {
+  background: black;
+}
+
+.ClickChangeColor {
+  color: white !important;
+}
+
+.ClickChangeColor2 {
+  background: white !important;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="style.css">
+
+
+<!-- question Section -->
+  <section class="question">
+    <h2 class="homeTitle">FAQ</h2>
+    <!-- アコーディオン -->
+    <dl class="questionAccordion">
+      <!--  -->
+      <div class="questionAccordion__block">
+        <dt class="questionAccordion__block--Q">
+          補助金申請すると必ず費用はかかるの？
+        </dt>
+        <dd class="questionAccordion__block--A">
+          <!-- <img src="../images/2.jpg"> -->
+          <p class="questionAccordion__block--Atext">
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
+          </p>
+        </dd>
+      </div>
+      <!--  -->
+      <div class="questionAccordion__block">
+        <dt class="questionAccordion__block--Q">
+          補助金申請すると必ず費用はかかるの？
+        </dt>
+        <dd class="questionAccordion__block--A">
+          <!-- <img src="../images/2.jpg"> -->
+          <p class="questionAccordion__block--Atext">
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
+          </p>
+        </dd>
+      </div>
+      <!--  -->
+      <div class="questionAccordion__block">
+        <dt class="questionAccordion__block--Q">
+          補助金申請すると必ず費用はかかるの？
+        </dt>
+        <dd class="questionAccordion__block--A">
+          <!-- <img src="../images/2.jpg"> -->
+          <p class="questionAccordion__block--Atext">
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
+          </p>
+        </dd>
+      </div>
+
+    </dl>
+  </section>
+
+
+
+
+  <script>
+
+  //  アコーディオン
+  const dts = document.querySelectorAll('.questionAccordion__block--Q')
+    
+    // 上で取得したdt全てに処理をするのでforEachを使う
+    dts.forEach(dt => {
+      dt.addEventListener("click", () =>{
+    dt.parentNode.classList.toggle('appear');//dtの親に対してクラスの付けはずしをしたい
+      });
+    });
+    
+    dts.forEach(EL => {
+      if (dt !== EL){
+        EL .parentNode.classList.remove('appear');
+      }
+    })
+  
+  
+  </script>

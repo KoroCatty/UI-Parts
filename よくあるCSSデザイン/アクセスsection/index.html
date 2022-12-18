@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="style.css">
+
+
+  <!-- お問い合わせ -->
+  <section class="topContact">
+    <div class="topContactWrap">
+
+      <h2 class="topTitle">お問い合わせ</h2>
+
+      <div class="topContact__group">
+
+        <div class="topContact__container">
+          <h2 class="topContact__container--logo">株式会社ノムラ</h2>
+
+          <div class="topContact__detail">
+            <ul class="topContact__detailLeft">
+              <li class="topContact__detailLeft--title">電話番号</li>
+              <li class="topContact__detailLeft--title">所在地</li>
+              <li class="topContact__detailLeft--title">代表取締役</li>
+              <li class="topContact__detailLeft--title">事業内容</li>
+            </ul>
+            <ul class="topContact__detailRight">
+              <li class="topContact__detailRight--content">06-6583-7511</li>
+              <li class="topContact__detailRight--content">大阪市港区波除6-2-26</li>
+              <li class="topContact__detailRight--content">野村　博之</li>
+              <li class="topContact__detailRight--content">ネジ製造</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="topContact__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.1500600077507!2d135.4600848!3d34.676162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e63adf053751%3A0xe5e0c0330e9f9da!2z44CSNTUyLTAwMDEg5aSn6Ziq5bqc5aSn6Ziq5biC5riv5Yy65rOi6Zmk77yW5LiB55uu77yS4oiS77yS77yW!5e0!3m2!1sja!2sjp!4v1656669294249!5m2!1sja!2sjp"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <!-- width="480" height="400" style="border:0;"  -->
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="contactButton">
+        <a href="https://nomura-neji.netlify.app/contact" class="contactButton--link">
+          <div class="contactButton--text">
+            <i class="fa-regular fa-file-lines"></i>
+            お問い合わせ
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- よくある質問 アコーディオン-->
+  <section class="topQuestion">
+    <h2 class="topTitle">よくある質問</h2>
+
+    <ul class="accordionArea">
+      <li>
+        <section class="">
+          <h3 class="title">即日即納の受付時間は何時までですか？</h3>
+          <div class="box">
+            <p>午後4時までお受付しております。お急ぎの場合はお電話ください。</p>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section>
+          <h3 class="title">直接ネジを引き取りにいってもいいですか？</h3>
+          <div class="box">
+            <p>可能です。お気軽にご相談ください。</p>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section>
+          <h3 class="title">職場見学をしたいのですが</h3>
+          <div class="box ">
+            <p>お問い合わせフォームより日時や内容などをご記入いただきご相談ください。</p>
+          </div>
+        </section>
+      </li>
+    </ul>
+  </section>
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+
+
+
+<script>
+    //アコーディオンをクリックした時の動作
+$('.title').on('click', function() {//タイトル要素をクリックしたら
+  $('.box').slideUp(500);//クラス名.boxがついたすべてのアコーディオンを閉じる
+    
+  let findElm = $(this).next(".box");//タイトル直後のアコーディオンを行うエリアを取得
+    
+  if($(this).hasClass('close')){//タイトル要素にクラス名closeがあれば
+    $(this).removeClass('close');//クラス名を除去    
+  }else{//それ以外は
+    $('.close').removeClass('close'); //クラス名closeを全て除去した後
+    $(this).addClass('close');//クリックしたタイトルにクラス名closeを付与し
+    $(findElm).slideDown(500);//アコーディオンを開く
+  }
+});
+
+
+//ページが読み込まれた際にopenクラスをつけ、openがついていたら開く動作※不必要なら下記全て削除
+$(window).on('load', function(){
+  $('.accordionArea li:first-of-type section').addClass("open"); //accordionAreaのはじめのliにあるsectionにopenクラスを追加
+  $(".open").each(function(index, element){ //openクラスを取得
+    let Title =$(element).children('.title'); //openクラスの子要素のtitleクラスを取得
+    $(Title).addClass('close');       ///タイトルにクラス名closeを付与し
+    let Box =$(element).children('.box'); //openクラスの子要素boxクラスを取得
+    $(Box).slideDown(500); //アコーディオンを開く
+  });
+});
+</script>

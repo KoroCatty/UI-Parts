@@ -1,0 +1,51 @@
+
+
+    .arrowButton {
+        margin: 30px 0px 0 40px;
+        width: 260px;
+        display: block;
+        text-decoration: none;
+  
+        &--text {
+          border: #aa7335 1px solid;
+          color: #aa7335;
+          font-size: 18px;
+          text-align: center;
+          padding: 15px 20px;
+          position: relative;
+  
+          &:before {
+            content: "";
+            position: absolute;
+            height: 20px;
+            top: 15px;
+            left: 270px;
+            border-right: 1.5px #aa7335 solid;
+            transform: rotate(120deg);
+          }
+  
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 240px;
+            width: 40px;
+            height: 30px;
+            border-bottom: 1.5px #aa7335 solid;
+          }
+  
+          &:hover:before {
+            top: 15px;
+            left: 300px;
+            transition: 0.4s ease;
+          }
+  
+          &:hover:after {
+            width: 70px;
+            transition: 0.4s ease;
+          }
+        }
+      
+  
+    
+  }
