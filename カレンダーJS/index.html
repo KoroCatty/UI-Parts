@@ -21,8 +21,6 @@
       rel="stylesheet"
     />
 
-<link rel="stylesheet" href="style.css">
-
     <!-- font awesome cdn  -->
     <script
       src="https://kit.fontawesome.com/f1ec62d0b6.js"
@@ -37,14 +35,17 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="main.css">
   </head>
 
 
   <!------ contents ------------------------------ -->
   <body>
+    <main id="CalendarEntire">
    
-    <div id="container">
-      <div id="header">
+    <div id="CalendarWrap">
+      <div id="CalendarWrap__header">
 
         <!-- jsで現在の年と月を表示 -->
         <div id="monthDisplay"></div>
@@ -65,12 +66,14 @@
         <div>Saturday</div>
       </div>
 
+      <!-- ここに日にちのコマが入ってくる -->
       <div id="calendar"></div>
     </div>
 
+
     <!-- モーダルウィンドウ -->
     <div id="newEventModal">
-      <h2>New Event</h2>
+      <h2 id="newEventModal__title">New Event</h2>
 
       <input id="eventTitleInput" placeholder="Event Title" />
 
@@ -82,23 +85,16 @@
     <div id="deleteEventModal">
       <h2>Event</h2>
       
-<!-- jsで詳細出す -->
+<!-- jsで詳細を出力 -->
       <p id="eventText"></p>
 
       <button id="deleteButton">Delete</button>
       <button id="closeButton">Close</button>
     </div>
 
+    <!-- モーダル時の黒マスク -->
     <div id="modalBackDrop"></div>
-
-
-
-
-
-
-
-
-
+  </main>
 
 
 
@@ -113,6 +109,15 @@
       type="text/javascript"
       src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
+
+
+
+
+
+
+
+
+
 
 
     <script>
@@ -297,7 +302,6 @@ function initButtons() {
 initButtons();
 
 load();
-
 
 
 

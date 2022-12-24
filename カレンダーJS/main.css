@@ -227,14 +227,26 @@ select {
   max-width: 820px;
 }
 
-body {
+#CalendarEntire {
   display: flex;
   margin-top: 50px;
   justify-content: center;
   background-color: #FFFCFF;
 }
 
-button {
+#CalendarWrap {
+  width: 770px;
+}
+#CalendarWrap__header {
+  padding: 10px;
+  color: #d36c6c;
+  font-size: 26px;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+#CalendarWrap__header button {
+  background-color: #92a1d1;
   width: 75px;
   cursor: pointer;
   box-shadow: 0px 0px 2px gray;
@@ -245,29 +257,13 @@ button {
   color: white;
 }
 
-#header {
-  padding: 10px;
-  color: #d36c6c;
-  font-size: 26px;
-  font-family: sans-serif;
-  display: flex;
-  justify-content: space-between;
-}
-
-#header button {
-  background-color: #92a1d1;
-}
-
-#container {
-  width: 770px;
-}
-
 #weekdays {
   width: 100%;
   display: flex;
+  justify-content: space-around;
   color: #247BA0;
+  text-align: center;
 }
-
 #weekdays div {
   width: 100px;
   padding: 10px;
@@ -279,8 +275,7 @@ button {
   display: flex;
   flex-wrap: wrap;
 }
-
-.day {
+#calendar .day {
   width: 100px;
   padding: 10px;
   height: 100px;
@@ -293,12 +288,10 @@ button {
   flex-direction: column;
   justify-content: space-between;
 }
-
-.day:hover {
+#calendar .day:hover {
   background-color: #e8faed;
 }
-
-.day + #currentDay {
+#calendar .day#currentDay {
   background-color: #e8f4fa;
 }
 
@@ -331,6 +324,10 @@ button {
   position: absolute;
   font-family: sans-serif;
 }
+#newEventModal__title, #deleteEventModal__title {
+  margin-bottom: 8px;
+  color: rgb(43, 43, 43);
+}
 
 #eventTitleInput {
   padding: 10px;
@@ -342,21 +339,38 @@ button {
   border: none;
   box-shadow: 0px 0px 3px gray;
 }
-
 #eventTitleInput.error {
   border: 2px solid red;
 }
 
 #cancelButton, #deleteButton {
   background-color: #d36c6c;
+  width: 75px;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px gray;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
 }
 
 #saveButton, #closeButton {
   background-color: #92a1d1;
+  width: 75px;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px gray;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
 }
 
 #eventText {
-  font-size: 14px;
+  font-size: 0.9rem;
+  margin: 8px 0;
+  line-height: 1.2rem;
 }
 
 #modalBackDrop {
@@ -368,4 +382,4 @@ button {
   height: 100vh;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=main.css.map */
