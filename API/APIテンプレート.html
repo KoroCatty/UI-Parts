@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetching the data</title>
+</head>
+
+<body>
+    <div class="result"></div>
+
+    <script>
+        fetch("https://api.tvmaze.com/search/shows?q=dragon")
+            .then((result) => {
+                console.log("You got URL! But not JSON形式", result);
+                return result.json();
+            })
+            // JSON形式に変換して、json に格納
+            .then((json) => {
+                console.log("This is JSON形式", json);
+
+                // 関数の呼び出し
+                makeNames(json);
+                makeImages(json);
+            })
+            // エラー処理
+            .catch((error) => {
+                console.log("error desu", error);
+            });
+
+        // 名前を出力する関数の定義
+        const makeNames = (abc) => {
+            for (let bbb of abc) {
+                if (bbb.show.ended) {
+                    // You gotta create element and then you can add to data that is from API
+                    const newNames = document.createElement("div");
+                    document.body.append(newNames);
+                    newNames.textContent = JSON.stringify(bbb.show.name);
+                }
+            }
+        };
+
+        //  画像を出力する関数の定義
+        const makeImages = (shows) => {
+            for (let aaa of shows) {
+                const img = document.createElement("IMG");
+                img.src = aaa.show.image.medium;
+                document.body.append(img);
+            }
+        };
+
+
+        // ------------------------------
+        // Async await 
+        // ------------------------------
+        const loadStarWarsPeople = async () => {
+            try {
+                // URL 取得して res に格納
+                const res = await fetch("https://swapi.dev/api/people/1/");
+                // res を json形式に変換
+                const data = await res.json();
+                console.log(data);
+
+
+                // 実践
+                const res2 = await fetch("https://api.tvmaze.com/search/shows?q=pokemon");
+                const data2 = await res2.json();
+                console.log("This is JSON形式 by async await", data2);
+
+                // 関数の呼び出し
+                getApi(data2);
+
+            } catch (e) {
+                console.log("ERROR!!!", e);
+            }
+        };
+
+        // Pokemonの画像
+        // 関数 getApiを定義しておく。 APIのデータが date2　によって渡って来ているので、それをループ
+        const getApi = (Koro) => {
+            for (let Imgs of Koro) {
+                const img = document.createElement("IMG");
+                img.src = Imgs.show.image.medium;
+                document.body.append(img);
+            }
+        }
+
+        loadStarWarsPeople();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
