@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Basics</title>
+</head>
+
+<body>
+    <h1>Form Events</h1>
+
+    <form action="/dogs" id="tweetForm">
+        <input type="text" name="aaa" placeholder="username">
+        <input type="text" name="bbb" placeholder="tweet">
+        <button>Post Tweet</button>
+    </form>
+  
+  
+  
+    <h2>Tweets:</h2>
+    <ul id="tweets">
+
+    </ul>
+
+    <script>
+
+
+
+const tweetForm = document.querySelector('#tweetForm');
+const tweetsContainer = document.querySelector('#tweets');
+tweetForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // const usernameInput = document.querySelectorAll('input')[0];
+    // const tweetInput = document.querySelectorAll('input')[1];
+    
+    // elementsのaaa はHTMLのinputの nameから来ている
+    const usernameInput = tweetForm.elements.aaa; 
+    // console.dir(usernameInput)
+    const tweetInput = tweetForm.elements.bbb;
+
+    // 各フォームのvalueを取得し、下の関数に投げる
+    addTweet(usernameInput.value, tweetInput.value)
+    usernameInput.value = '';
+    tweetInput.value = '';
+});
+
+const addTweet = (aaa, bbb) => {
+    const newTweet = document.createElement('li');
+    const bTag = document.createElement('b');
+    bTag.append(aaa)
+    newTweet.append(bTag);
+    newTweet.append(`- ${bbb}`)
+    tweetsContainer.append(newTweet);
+}
+{/* 
+<li><b>Colt</b> - fjkdjfadfkj </li> 
+*/}
+
+    </script>
+</body>
+
+</html>
