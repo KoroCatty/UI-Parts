@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+    https://jsonplaceholder.typicode.com/users
+ -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Functions</title>
+</head>
+
+<body>
+    <ol id="lists">
+        <li>example name</li>
+        <li>example name</li>
+        <li>example name</li>
+    </ol>
+    <button id="addBtn">More </button>
+
+
+
+    
+    <script>
+
+// https://jsonplaceholder.typicode.com/users
+
+const btn = document.getElementById("addBtn");
+const lists = document.getElementById("lists");
+
+// API データをとる関数をここで作っておく。そして下で呼び出せる
+async function getUsers() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const users = await res.json(); // json形式化
+  return users; // 関数化してやる時は returnせなあかん
+}
+
+// ここで関数化して、下のaddEventListenerのところで使っている
+async function listUsers() {
+    // 上で定義した、API data を取得するまで待つ必要あり、なので async await を使用してる
+  const users = await getUsers(); 
+
+  // DOM manipulation
+  // forEach() version
+  users.forEach((aaa) => {
+    const list = document.createElement("li");
+    list.innerText = aaa.address.zipcode + " と " + aaa.name;
+    lists.append(list); // appendChildは古い
+  });
+}
+btn.addEventListener("click", listUsers);
+
+// ページ読み込み時 -------------------------------------
+window.addEventListener("load", async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const users = await res.json(); // json形式化
+  console.log(users);
+
+  // DOM manipulation
+  users.forEach((aaa) => {
+    // idが 1〜4までの人の分を出力
+    if (aaa.id <= 4) {
+      const list = document.createElement("li");
+      // list.innerText = JSON.stringify(users); // string化
+      list.innerText = aaa.address.zipcode + " と " + aaa.name;
+      lists.append(list); // appendChildは古い
+    }
+  });
+
+  // for() version
+  //   for ( let index = 0; index < users.length; index++ ) {
+  //       const user = users[index];
+  //       const list = document.createElement("li");
+  //       list.innerText = (user.address.zipcode + " と " + user.name);
+  //       lists.append(list); // appendChildは古い
+  //   }
+});
+
+    </script>
+</body>
+
+</html>
