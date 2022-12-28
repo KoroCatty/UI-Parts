@@ -1,0 +1,344 @@
+<style>
+
+main p {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.worrying__box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+  flex-flow: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  padding: 0;
+  max-width: 1134px;
+  margin: 0 1em -2em;
+}
+@media (min-width: 1025px) {
+  .worrying__box {
+    margin: 0 auto -2em;
+  }
+}
+.worrying__box::before {
+  content: "";
+  display: block;
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  bottom: -40%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotateZ(5deg);
+  -ms-transform: translateX(-50%) rotate(5deg);
+  transform: translateX(-50%) rotateZ(5deg);
+  background: #fff;
+}
+
+.worrying__item {
+  width: calc((100% - 4.39238653vw) / 3);
+  height: 8em;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0em;
+  padding: 1em 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column;
+  flex-flow: column;
+}
+.worrying__item:last-child {
+  margin-bottom: 0.6rem;
+}
+.worrying__item::after {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url("./hukidasi.svg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+}
+.worrying__item::before {
+  display: none;
+}
+.worrying__item:nth-of-type(3n)::after {
+  background-image: url("./hukidasi2.svg");
+}
+
+.worrying__bg {
+  background: #ECECEC;
+}
+
+.worrying__text {
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.05em;
+}
+
+.worrying__talk {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.worrying__talk-img {
+  width: 55.710102489vw;
+  position: relative;
+}
+
+.worrying__arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 2.9282576867vw;
+}
+
+.worrying__down-arrow {
+  width: 4vw;
+  height: 4vw;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: rotateZ(-50deg) skewY(10deg);
+  -ms-transform: rotate(-50deg) skewY(10deg);
+  transform: rotateZ(-50deg) skewY(10deg);
+  border-bottom: solid 2px #000000;
+  border-left: solid 2px #000000;
+}
+.worrying__down-arrow + .worrying__down-arrow {
+  -webkit-transform: translateY(-2vw) rotateZ(-50deg) skewY(10deg);
+  -ms-transform: translateY(-2vw) rotate(-50deg) skewY(10deg);
+  transform: translateY(-2vw) rotateZ(-50deg) skewY(10deg);
+}
+
+.worrying__solution {
+  line-height: 1.4;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column;
+  flex-flow: column;
+}
+
+.worrying__solution--font1 {
+  margin-bottom: 0.7320644217vw;
+  letter-spacing: 0.2em;
+}
+
+.worrying__solution--font2 {
+  padding-bottom: 7.3206442167vw;
+  letter-spacing: 0.3em;
+}
+
+.worrying__sp-br {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+  flex-flow: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 2rem;
+  line-height: 1.8;
+}
+.worrying__sp-br span:first-child {
+  width: 100%;
+}
+
+.worrying__sp-fsbg {
+  font-size: 3rem;
+}
+
+@media all and (max-width: 1024px) {
+  .worrying__box {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    max-width: 540px;
+    margin: 0 auto -2em;
+  }
+  .worrying__box:before {
+    bottom: -15%;
+  }
+  .worrying__box::after {
+    display: none;
+  }
+
+  .worrying__item {
+    padding: 3em 8% 2em;
+    width: 48%;
+    min-height: 10em;
+    height: auto;
+  }
+  .worrying__item:nth-of-type(2n) {
+    margin-left: 4%;
+  }
+  .worrying__item:nth-of-type(3n)::after {
+    background-image: url("./hukidasi_sp.svg");
+  }
+  .worrying__item::after {
+    background-image: url("./hukidasi_sp.svg");
+    background-size: contain;
+  }
+
+  .worrying__text {
+    font-size: 0.875rem;
+  }
+
+  .worrying__down-arrow {
+    width: 6vw;
+    height: 6vw;
+  }
+
+  .worrying__sp-fsbg {
+    font-size: 2.2rem;
+  }
+}
+@media all and (max-width: 768px) {
+  .worrying__sp-br {
+    line-height: 1.5;
+  }
+}
+@media all and (max-width: 599px) {
+  .worrying {
+    background-size: 215vw auto;
+  }
+
+  .worrying__sp-br {
+    font-size: 1.175rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    line-height: 1.4;
+  }
+
+  .worrying__solution--font2 .worrying__sp-br {
+    font-size: 1.31rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .worrying__box {
+    margin-bottom: 0;
+  }
+  .worrying__box::before {
+    bottom: -20%;
+    -webkit-transform: translateX(-50%) rotateZ(-5deg);
+    -ms-transform: translateX(-50%) rotate(-5deg);
+    transform: translateX(-50%) rotateZ(-5deg);
+  }
+
+  .worrying__item {
+    width: 50%;
+    padding: 0.5em 5.5% 0em;
+    min-height: 27vw;
+  }
+  .worrying__item:nth-of-type(2n) {
+    margin-left: 0;
+  }
+  .worrying__item:after {
+    background-size: 100% auto;
+  }
+
+  .worrying__text {
+    font-size: 0.73rem;
+    line-height: 2;
+    letter-spacing: 0.016em;
+  }
+
+  .worrying__talk-img {
+    width: 90%;
+  }
+}
+
+
+</style>
+
+
+<!-- <li class="worrying__item">
+    <p class="worrying__text">インターネットを<span class="mark--bold">ビジネスでどう活用してよいか分からない</span></p>
+  </li> -->
+
+
+<ul class="worrying__box container">
+  <li class="worrying__item">
+    <p class="worrying__text">インターネットを<span class="mark--bold">ビジネスでどう活用してよいか分からない</span></p>
+  </li>
+  <li class="worrying__item">
+    <p class="worrying__text">手当たり次第に施策をやってきたが、思うように<span class="mark--bold">結果に結びついていない</span></p>
+  </li>
+  <li class="worrying__item">
+    <p class="worrying__text">自分たちがやってきた施策が<span class="mark--bold">本当に良かったのか分からない</span></p>
+  </li>
+  <li class="worrying__item">
+    <p class="worrying__text">現在のWeb施策の効果に満足しておらず、<span class="mark--bold">次なる一手を考えなくてはいけない</span></p>
+  </li>
+  <li class="worrying__item">
+    <p class="worrying__text">日々の業務だけで精一杯で、Web施策の実行まで<span class="mark--bold">十分に手が回らない</span></p>
+  </li>
+  <li class="worrying__item">
+    <p class="worrying__text">マーケティングツールを導入したが、<span class="mark--bold">うまく使いこなせていない</span></p>
+  </li>
+  <li class="worrying__item">
+    <p class="worrying__text">Webマーケティングを担える<span class="mark--bold">人材の確保がなかなかできない</span></p>
+  </li>
+  <li class="worrying__item">
+    <p class="worrying__text">もっと親身になって<span class="mark--bold">一緒に考えてくれる</span>パートナーが欲しい</p>
+  </li>
+  <li class="worrying__item">
+    <p class="worrying__text">さまざまな提案を受け、<span class="mark--bold">どの会社を信じて良いか分からない</span></p>
+  </li>
+</ul>
+<div class="worrying__bg">
+  <div class="worrying__talk">
+    <noscript><img src="https://www.axis-corp.com/site/wp-content/themes/axis/assets/img/worrying_gray.png" alt="御社ではこんな課題はありませんか？" loading='lazy' class="worrying__talk-img"></noscript>
+    
+    
+    
+    <img src="https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" data-src="https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="御社ではこんな課題はありませんか？" loading="lazy" class="worrying__talk-img lazyloaded">
+  </div>
+  <div class="worrying__arrow">
+    <div class="worrying__down-arrow"></div>
+    <div class="worrying__down-arrow"></div>
+  </div>
+  <p class="worrying__solution worrying__solution--font1"><span class="worrying__sp-br"><span>Koro web design</span><span>Webマーケティングに</span><span>精通したパートナーとして</span></span></p>
+  <p class="worrying__solution worrying__solution--font2"><span class="worrying__sp-br worrying__sp-fsbg"><span>売上・問い合わせが増える</span><span>Web集客の</span><span>仕組み作りをご支援します</span></span></p>
+</div>
+</section>

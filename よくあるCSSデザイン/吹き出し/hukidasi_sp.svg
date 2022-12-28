@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 183 112.719">
+  <defs>
+    <filter id="hukidasi_sp" x="0" y="0" width="183" height="112.719" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.188"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#hukidasi_sp)">
+    <path id="hukidasi_sp-2" data-name="hukidasi_sp" d="M8.438-39H156.563A8.437,8.437,0,0,1,165-30.562V37.031a8.437,8.437,0,0,1-8.437,8.438h-62.8l-6.829,10.25L78.96,45.469H8.438A8.438,8.438,0,0,1,0,37.031V-30.562A8.437,8.437,0,0,1,8.438-39Z" transform="translate(9 47)" fill="#fff"/>
+  </g>
+</svg>
