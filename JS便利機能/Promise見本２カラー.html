@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Promises</title>
+
+    <style>
+        body {
+            transition: 1s background-color;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+    <h1>Creating Promises</h1>
+
+
+    <script>
+        // import '../stylesheets/main.scss';
+
+        // まずは定義
+        const fakeRequest = (url) => {
+            // 第一引数は成功、　第二は失敗 
+            return new Promise((resolve, reject) => {
+                const rand = Math.random();
+                setTimeout(() => {
+                    if (rand < 0.7) {
+                        resolve('YOUR FAKE DATA HERE');
+                    }
+                    reject('Request Error!');
+                }, 1000)
+            })
+        }
+
+        // これで発火する (ここにpromiseを書く)
+        fakeRequest('/dogs/1')
+            .then((data) => {
+                console.log("DONE WITH REQUEST!")
+                console.log('data is:', data)
+            })
+            .catch((err) => {
+                console.log("OH NO!", err)
+            })
+
+        // ---------------------------------------------------------
+
+        // 　定義   
+        const delayedColorChange = (color, delay) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    document.body.style.backgroundColor = color;
+                    resolve();
+
+                }, delay)
+            })
+        }
+
+        //  発火 (thenのところは、一行で書いてもいいし、returnを書いて普通に書いてもいい)
+        delayedColorChange('red', 1000) // color, delay に代入
+            .then(() => {
+                return delayedColorChange('orange', 1000)
+            })
+            .then(() => delayedColorChange('yellow', 1000))
+            .then(() => delayedColorChange('green', 1000))
+            .then(() => delayedColorChange('blue', 1000))
+            .then(() => delayedColorChange('indigo', 1000))
+            .then(() => delayedColorChange('violet', 1000))
+    </script>
+</body>
+
+
+</html>
