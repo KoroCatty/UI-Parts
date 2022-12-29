@@ -1,0 +1,109 @@
+<!-- AXIOSを使うと、json()でjson形式に直さなくてもよくなる -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <title>TV Show Search</title>
+
+    <!-- AXIOS CDN (if you don't use npm, you have to use this) -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <h1 class="title">TV Show Search</h1>
+    <div class="mv">
+        <!-- <img src="<%= require('../images/movie_mv.jpg') %>" alt="logo" class="mv__img"> -->
+    </div>
+
+    <form id="searchForm" class="searchForm">
+        <input class="searchForm__form" type="text" placeholder="Search" name="query"><br />
+        <button>Search</button>
+    </form>
+
+    <main class="tvShows"></main>
+
+
+
+
+
+    <script>
+        // Axios Library (when you use npm, you need to import this)
+        // import axios, {isCancel, AxiosError} from 'axios';
+
+
+        // const { default: axios } = require("axios");
+
+
+        const form = document.querySelector("#searchForm");
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault(); // ページの移り変わりを無効
+
+            // ここでform → elements　→ query → valueを探す　(elements propertyを見れる)
+            console.dir(form);
+
+            // 入力された値
+            const searchTerm = form.elements.query.value;
+
+            //入力された値をサーチクエリーに足す（axiosの機能でどんなサーチクエリーにも対応できる）
+            const config = { params: { q: searchTerm } };
+
+            // Get the URL and 入力された値
+            const res = await axios.get(
+                `https://api.tvmaze.com/search/shows`,
+                config
+                // `https://api.tvmaze.com/search/shows?q=${searchTerm}`
+            );
+            console.log(res.data); // ここで画像URLを探す。show->image->mediumの所にあった
+
+            //入力した画像のURLを取得
+            console.log(res.data[0].show.image.medium);
+
+            // 下で定義している関数の実行
+            makeImages(res.data);
+
+            // フォームを空にする
+            form.elements.query.value = "";
+        });
+
+
+        // 関数の定義
+        const makeImages = (results) => {
+            for (let result of results) {
+                // console.log(result);
+
+                // imgタグを生成し、そのsrcに画像URLを付け、bodyの後尾にimgタグを付けて表示する(without if gives you an error, due to every single url not have the Image URL)
+                if (result.show.image) {
+                    // タグを生成
+                    const img = document.createElement("img");
+
+                    // 下記の場所からURL取得し、imgのsrcに挿入
+                    img.src = result.show.image.medium;
+
+                    // img タグを付与
+                    const mainTag = document.querySelector("main");
+                    mainTag.append(img);
+
+
+                    // detail tag ------------------
+                    // if (result.show.name) {
+                    //     // detail タグを生成
+                    //     const detail = document.createElement("span");
+
+                    //     // nameを取得し、textContentで挿入
+                    //     detail.innerHTML = result.show.name;
+
+                    // // detail タグを付与
+                    // mainTag.append(detail);
+                    // }
+                }
+            }
+        };
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios</title>
+  </head>
+
+  <body>
+    <!-- AXIOS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    
+    
+    <script>
+        // axios
+//   .get("https://swapi.dev/api/people/1/")
+//   .then((res) => {
+//     console.log("RESPONSE: ", res);
+//   })
+//   .catch((e) => {
+//     console.log("ERROR! ", e);
+//   });
+
+const getStarWarsPerson = async (id) => {
+  try {
+    const res = await axios.get(`https://swapi.dev/api/people/${id}/`);
+    console.log(res.data);
+  } catch (e) {
+    console.log("ERROR", e);
+  }
+};
+//  入力する値によって取得する人が違う
+getStarWarsPerson(1);
+getStarWarsPerson(10);
+
+    </script>
+  </body>
+</html>

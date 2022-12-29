@@ -12,12 +12,15 @@
     <div class="result"></div>
 
     <script>
+           // ------------------------------
+        // Fetch Ver.
+        // ------------------------------
         fetch("https://api.tvmaze.com/search/shows?q=dragon")
             .then((result) => {
                 console.log("You got URL! But not JSON形式", result);
-                return result.json();
+                return result.json(); // JSON形式に変換
             })
-            // JSON形式に変換して、json に格納
+            // json に格納
             .then((json) => {
                 console.log("This is JSON形式", json);
 
@@ -53,10 +56,11 @@
 
 
         // ------------------------------
-        // Async await 
+        // Async await ( The Best way )
         // ------------------------------
         const loadStarWarsPeople = async () => {
             try {
+                // 一つ目
                 // URL 取得して res に格納
                 const res = await fetch("https://swapi.dev/api/people/1/");
                 // res を json形式に変換
@@ -64,7 +68,7 @@
                 console.log(data);
 
 
-                // 実践
+                // ２つ目　（実践）
                 const res2 = await fetch("https://api.tvmaze.com/search/shows?q=pokemon");
                 const data2 = await res2.json();
                 console.log("This is JSON形式 by async await", data2);
