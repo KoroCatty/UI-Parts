@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  background: black;
+  color: white;
+}
+
+.box {
+	width: 100%;
+	height: 600px;
+	border: 2px solid rgb(255, 255, 255);
+}
+
+.box.aaa {
+  background: blue;
+}
+  </style>
+</head>
+<body>
+
+
+<h1>Colour Change</h1>
+<p class="">Move mouse to change color</p>
+<div class="box"></div>
+
+
+
+
+
+
+
+
+<script>
+const box = document.querySelector(".box");
+box.addEventListener('mousemove', function(e) {
+  x = e.offsetX
+  y = e.offsetY 
+  box.style.backgroundColor = `rgba( ${x}, ${y}, ${x - y}, 0.8 )`
+})
+</script>
+
+</body>
+</html>
