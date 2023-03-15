@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode</title>
+  <style>
+    /* =============================== */
+/* Dark Mode Button */
+    /* =============================== */
+#darkmodeBtn {
+  padding: 28px 24px;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+/* =============================== */
+/* Dark Mode CSS 　動的に変わる部分　*/
+/* =============================== */
+.dark {
+  background-color: black;
+  color: rgb(234, 234, 234);
+}
+
+.dark #darkmodeBtn {
+  background-color: rgb(230, 230, 230);
+  color: black;
+}
+  </style>
+</head>
+<body>
+  <header>Darkmode解説ページ</header>
+  <main>
+    <h1>Hello World!</h1>
+    <p>このページはダークモードを解説する為に作られました</p>
+    <div id='darkmodeBtn'>ダークモード</div>
+  </main>
+
+
+
+
+  <script>
+// ====================================
+// Dark Mode (normal & dark を繰り返す localStorageで)
+// ====================================
+const body = document.querySelector('body');
+const darkmodeBtn = document.getElementById('darkmodeBtn');
+
+// mode の値を localStorage から読み出し格納
+var mode = localStorage.getItem('mode');
+
+// darkの値なら body にクラスを付与
+if (mode === 'dark') {
+  body.classList.add('dark');
+}
+
+darkmodeBtn.addEventListener('click', () => {
+
+  // dark のCSSをトグル
+  body.classList.toggle('dark');
+
+  // normal の値なら実行
+  if (mode === 'normal') {
+
+    // modeのkeyを darkの値に上書きする
+    localStorage.setItem('mode', 'dark');
+    mode = 'dark';
+
+  } else {
+    localStorage.setItem('mode', 'normal');
+    mode = 'normal';
+  }
+});
+
+
+  </script>
+</body>
+</html>
