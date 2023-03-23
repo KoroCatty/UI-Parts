@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Star Wars 👩🏼‍🚀</title>
+	<script src="./javascript.js" defer></script>
+	<style>
+		input {
+			width: 80%;
+			height: 60px;
+		}
+		input[type=text] {
+			font-size: 2rem;
+			padding-left: 8px;
+		}
+		.gender {
+			font-size: 1.2rem;
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>STAR WARS 🛸</h1>
+	<label for="search">Search for a character:</label>
+	<input type="text" id="search" name="search" >
+	<!-- <button id="searchBtn">Search</button> -->
+
+	<ul id="results"></ul>
+
+
+	<script>
+
+const searchResults = document.querySelector("#results");
+const searchInput = document.querySelector("#search");
+
+// ===========================================
+// タイプしながらfilterをかける
+// ===========================================
+searchInput.addEventListener("keyup", (e) => {
+
+  // 今タイプしてる値を格納 (小文字に変えてから格納)
+  const searchString = e.target.value.toLowerCase();
+
+  // results の配列に対して filter() をかける (これはコールバック関数)
+  const filteredName = json.results.filter((character) => {
+    // results内の name に対してタイプしたやつが一致するか見てreturn
+    return (
+      // 全て小文字に変えてるので、case insensitive になっている
+      character.name.toLowerCase().includes(searchString) ||
+      character.gender.toLowerCase().includes(searchString)
+    );
+  });
+
+  // returnしたので、ここで関数にアクセスして内容を確認
+  console.log(filteredName);
+
+  // pass the filtered value
+  displayCharacters(filteredName);
+});
+
+// ===========================================
+// ページ読み込み時に表示するAPI を取得
+// ===========================================
+let json = [];
+async function searchPeople() {
+  const res = await fetch(`https://swapi.dev/api/people/`);
+
+  // const json = await res.json(); //上でグローバルで定義してるのでいらない
+  json = await res.json();
+  displayCharacters(json.results);
+
+  console.log(json); // 全てを表示
+}
+searchPeople();
+
+// ===========================================
+// 上の関数からフィルター化された配列が引数に渡ってくる
+// ===========================================
+const displayCharacters = (characters) => {
+
+  // map()でループし、HTMLに表示させる
+  const htmlString = characters
+    .map((aaa) => {
+      return `
+    <h2>Name: ${aaa.name}
+      <span class="gender"> Gender: ${aaa.gender}</span>
+    </h2>
+    `;
+    }).join(" & ");
+    // 配列（または配列風オブジェクト）の全要素を順に連結した文字列を新たに作成して返します。
+
+    // HTMLに注入する
+  searchResults.innerHTML = htmlString;
+};
+
+
+
+	</script>
+</body>
+
+</html>
