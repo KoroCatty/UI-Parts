@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @charset "utf-8";
+
+/* ==========================
+  初期設定
+========================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+}
+
+/* ==========================
+  ローディング画面
+========================== */
+.bl_loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3s;
+}
+.bl_loading.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.bl_loadingCircle {
+  animation: 3s linear loading infinite;
+  height: 30px;
+  width: 30px;
+  border: 1px solid #fff;
+  border-top: 1px solid #aaa;
+  border-radius: 50%;
+  content: "";
+  margin-bottom: 10px;
+}
+
+/* ==========================
+  コンテンツの中身
+========================== */
+.ly_inner {
+  width: 100%;
+  max-width: 1080px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #ccc;
+}
+.ly_inner h2 {
+  font-size: 150%;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.md_textblock > * + * {
+  margin-top: 10px;
+}
+  </style>
+</head>
+<body>
+    <!--  ----------------->
+  <!-- Loading Screen  -->
+  <!--  ----------------->
+  <div id="js_loading" class="bl_loading">
+    <div class="bl_loadingCircle"></div>
+    <div class="bl_loadingText">loading...</div>
+  </div>
+  
+  <script>
+    // =============================================
+// ローディング画面 (this func add css class)
+// =============================================
+function loadedPage() {
+  const loadingID = document.getElementById("js_loading");
+  loadingID.classList.add("loaded");
+}
+
+// if there's no sessionStorage, add it and fire the function
+if (!sessionStorage.getItem("visited")) {
+  sessionStorage.setItem("visited", "first");
+  window.addEventListener("load", function () {
+    setTimeout(loadedPage, 2000);
+  });
+  setTimeout(loadedPage, 2000);
+
+  // otherwise just fire the function so that you don't see loading animation
+} else {
+  loadedPage();
+}
+
+  </script>
+</body>
+</html>
