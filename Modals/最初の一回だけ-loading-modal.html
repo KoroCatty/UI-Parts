@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: .6s;
+}
+.popup.is-show {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: #fff;
+  z-index: 2;
+  border-radius: 3px;
+}
+.popup-inner img {
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+}
+div#modalCloseCloss:hover {
+    opacity: 0.7;
+}
+.modalCloseButton {
+    position: absolute;
+    left: 92%;
+    top: -48px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.lineClose {
+    display: inline-block;
+    vertical-align: middle;
+    color: #FFF;
+    line-height: 1;
+    width: 2rem;
+    height: 0.2rem;
+    background: currentColor;
+    border-radius: 0.1rem;
+    position: relative;
+    transform: rotate(45deg);
+}
+.lineClose::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  transform: rotate(90deg);
+}
+.black-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.6);
+  z-index: 1;
+  cursor: pointer;
+}
+.modalBottom {
+    padding: 22px 30px;
+}
+.modalBottom p {
+    margin: 0;
+}
+  </style>
+</head>
+<body>
+  <div class="popup" id="firstTimeModal">
+    <div class="popup-inner">
+      <div class="modalCloseButton" id="modalCloseCloss"><span class="lineClose"></span></div>
+      <img src="https://dubdesign.net/wp-content/uploads/2022/02/java_modaltoc-1024x587.jpg" alt="ポップアップ画像">
+      <div class="modalBottom"><p>あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市。</p></div>
+    </div>
+    <div class="black-background" id="js-black-bg"></div>
+  </div>
+
+  <script>
+    const keyName = 'viewed';
+const keyValue = true;
+
+if (!sessionStorage.getItem(keyName)) {
+    sessionStorage.setItem(keyName, keyValue);
+
+    console.log("初回の閲覧");
+window.onload = function() {
+  var popup = document.getElementById('firstTimeModal');
+  if(!popup) return;
+  popup.classList.add('is-show');
+
+  var blackBg = document.getElementById('js-black-bg');
+  var closeBtn = document.getElementById('modalCloseCloss');
+
+  closePopUp(blackBg);
+  closePopUp(closeBtn);
+
+  function closePopUp(elem) {
+    if(!elem) return;
+    elem.addEventListener('click', function() {
+      popup.classList.remove('is-show');
+    })
+  }
+}
+} else {
+    console.log("2回目以降の閲覧");
+}
+  </script>
+</body>
+</html>
