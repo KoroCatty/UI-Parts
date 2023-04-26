@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <title>StudyTime</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* CSS Variables */
+:root {
+  --main-dark: #333;
+  --main-offdark: #444;
+  --main-light: #ffffff;
+  --main-primary: #02ECD1;
+  --main-offprimary: #01a08e;
+}
+
+/* CSS Reset */
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--main-offdark);
+  color: var(--main-light);
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* PHP ALERTS */
+#alert {
+  display: block;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.success {
+  background: greenyellow;
+  color: var(--main-dark);
+}
+
+.connection-success{
+  background: var(--main-primary);
+  color: var(--main-dark);
+}
+
+.danger {
+  background: red;
+  color: var(--main-light);
+}
+
+/* NAVBAR */
+#navbar {
+  background: var(--main-dark);
+  color: var(--main-light);
+  overflow: auto;
+}
+
+#navbox {
+  margin: auto;
+  max-width: 80vw;
+  overflow: auto;
+  padding: 0 20px;
+}
+
+#navbar a {
+  color: var(--main-primary);
+}
+
+#navbar h1 {
+  float: left;
+  padding-top: 15px;
+}
+
+#navbar ul {
+  list-style: none;
+  float: right;
+}
+
+#navbar ul li {
+  float: left;
+}
+
+#navbar ul li a {
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+#navbar ul li a:hover, 
+#navbar ul li a.current {
+  background: var(--main-offdark);
+  color: var(--main-primary);
+}
+
+/* MAIN FORM SECTION */
+#container {
+  margin: 30px auto;
+  max-width: 40vw;
+  padding: 20px;
+}
+
+.form-wrap {
+  background: var(--main-dark);
+  padding: 15px 25px;
+  color: var(--main-primary);
+  border-radius: 5px;
+}
+
+.form-wrap h1 {
+  text-align: center;
+}
+
+.form-wrap p {
+  text-align: center;
+  color: var(--main-light);
+}
+
+.form-wrap a {
+  color: var(--main-primary);
+}
+
+.form-wrap .form-group {
+  margin: 20px 0;
+}
+
+.form-wrap .form-group label {
+  display: block;
+  color: var(--main-light);
+}
+
+.form-wrap .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: #ddd 1px solid;
+  border-radius: 5px;
+}
+
+.form-wrap button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 30px 0;
+  background: var(--main-primary);
+  color: var(--main-dark);
+  cursor: pointer; 
+  border: 2px solid var(--main-primary);
+  border-radius: 5px;
+}
+
+.form-wrap button:hover {
+  background: var(--main-offprimary);
+  color: var(--main-light);
+  border: 2px solid black;
+}
+
+.form-wrap .bottom-text {
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  margin-top: 10px;
+}
+
+footer a {
+  color: var(--main-primary);
+}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav id="navbar">
+      <div id="navbox">
+        <h1 class="logo"><a href="<?php $_PHP_SELF ?>">StudyTime</a></h1>
+        <ul>
+          <li><a class="current" href="<?php $_PHP_SELF ?>">Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <div id="container">
+    <div class="form-wrap">
+      <h1>StudyTime</h1>
+      <p>For the organised late-night student!</p>
+      <form action="" method="POST">
+        <!-- a. First Name: -->
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" name="fname" id="first-name" />
+        </div>
+        <!-- b. Last Name: -->
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" name="lname" id="last-name" />
+        </div>
+        <!-- c. Study Date -->
+        <div class="form-group">
+          <label for="sdate">Date</label>
+          <input type="date" name="sdate" id="study-date" />
+        </div>
+        <!-- d. Study Hours -->
+        <div class="form-group">
+          <label for="shours">Duration of Study</label>
+          <input type="number" name="shours" id="study-hours" />
+        </div>
+        <!-- e. Submit Button -->
+        <button type="submit" class="btn" value="post-submit">Submit</button>
+
+        <p class="bottom-text">
+          For further information on StudyTimeApp, see our
+          <a href="#">Terms & Conditions</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Different Student? <a href="#">Login Here</a></p>
+    </footer>
+  </div>
+</body>
+</html>
